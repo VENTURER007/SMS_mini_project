@@ -1,2 +1,2 @@
-# SMS_mini_project
+# STUDENT RECORD MANAGEMENT SYSTEM
 A RDBMS mini project 
