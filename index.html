@@ -29,12 +29,12 @@
         </form>
       </div>
       <div class="container b-container" id="b-container">
-        <form class="form" id="b-form" method="" action="">
+        <form class="form" id="b-form" method="post" action="authenticate.php">
           <h2 class="form_title title">Sign in to Website</h2>
           <div class="form__icons"><img class="form__icon" src=""></div><span class="form__span"></span>
-          <input class="form__input" type="text" placeholder="Email">
-          <input class="form__input" type="password" placeholder="Password"><a class="form__link">Forgot your password?</a>
-          <button class="form__button button submit">SIGN IN</button>
+          <input name="email" class="form__input" type="text" placeholder="Email">
+          <input name="password" class="form__input" type="password" placeholder="Password"><a class="form__link">Forgot your password?</a>
+          <button form="b-form" value="SIGN IN" class="form__button button submit">SIGN IN</button>
         </form>
       </div>
       <div class="switch" id="switch-cnt">
@@ -48,7 +48,7 @@
         <div class="switch__container is-hidden" id="switch-c2">
           <h2 class="switch__title title">Hello Students!</h2>
           <p class="switch__description description">Click Sign up to register yourself</p>
-          <button class="switch__button button switch-btn">SIGN UP</button>
+          <button type="submit"  value="Login" class="switch__button button switch-btn">SIGN UP</button>
         </div>
       </div>
     </div>

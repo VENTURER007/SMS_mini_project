@@ -200,6 +200,25 @@ body {
   padding: 50px 55px;
   transition: 1.25s;
 }
+
+.form__button {
+  cursor: pointer;
+
+}
+
+.form__button:hover{
+  box-shadow: 6px 6px 10px #d1d9e6, -6px -6px 10px #f9f9f9;
+  transform: scale(0.985);
+  transition: 0.25s;
+}
+
+.form:active,.form__button:focus{
+  box-shadow: 2px 2px 6px #d1d9e6, -2px -2px 6px #f9f9f9;
+  transform: scale(0.97);
+  transition: 0.25s;
+
+}
+
 .switch__button {
   cursor: pointer;
 }
