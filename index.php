@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>SRMS</title>
   <link rel="stylesheet" href="./style.css">
-  
+  <link rel="shortcut icon" href="https://imgs.search.brave.com/mxUi3SedBJ0ulvsEYukW8BaIAOaY4OEie0gWUqtlIP8/rs:fit:711:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5V/Vy1JRWRhSmJHcU4z/Mm5GVlYxU0p3SGFF/OCZwaWQ9QXBp">
 
 </head>
 <body>
@@ -17,24 +17,33 @@
     <link rel="stylesheet" type="text/css" href="main.css"><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
   </head>
   <body>
+    
     <div class="main">
       <div class="container a-container" id="a-container">
-        <form class="form" id="a-form" method="" action="">
+      
+        <form class="form" id="a-form" method="POST" action="gateway.php">
           <h2 class="form_title title">Create Account</h2>
-          <div class="form__icons"><img class="form__icon" src=""></div><span class="form__span"></span>
-          <input class="form__input" type="text" placeholder="Name">
-          <input class="form__input" type="text" placeholder="Email">
-          <input class="form__input" type="password" placeholder="Password">
-          <button class="form__button button submit">SIGN UP</button>
+          <?php include 'respond.php'; ?>
+          <span class="form__span"></span>
+          <input type="text" class="form__input" name="name" id="name" placeholder="Full Name *" required="required" autocomplete="off" title="Insert Your Full Name Here">
+
+					<input type="text" class="form__input" name="email" id="email" placeholder="Email Address *" required="required" autocomplete="off" title="Insert Your Email Address Here">
+
+					<input type="password" class="form__input" name="password" id="password" placeholder="Password *" required="required" autocomplete="off" title="Insert Your Password Here">
+
+					<input type="password" class="form__input" name="cpassword" id="cpassword" placeholder="Confirm Password *" required="required" autocomplete="off" title="Re-Enter Your Password Here">
+
+					<input type="submit" class="switch__button button" name="signup" value="submit">
+         
         </form>
       </div>
       <div class="container b-container" id="b-container">
-        <form class="form" id="b-form" method="post" action="authenticate.php">
+        <form class="form" id="b-form" method="POST" action="login.php">
           <h2 class="form_title title">Sign in to Website</h2>
-          <div class="form__icons"><img class="form__icon" src=""></div><span class="form__span"></span>
-          <input name="email" class="form__input" type="text" placeholder="Email">
-          <input name="password" class="form__input" type="password" placeholder="Password"><a class="form__link">Forgot your password?</a>
-          <button form="b-form" value="SIGN IN" class="form__button button submit">SIGN IN</button>
+          <span class="form__span"></span>
+          <input type="text" class="form__input" name="email" id="email" placeholder="Email Address *" required="required" autocomplete="off" title="Insert Your Email Address Here">
+					<input type="password" class="form__input" name="password" id="password" placeholder="Password *" required="required" autocomplete="off" title="Insert Your Password Here">
+					<input type="submit" class="switch__button button" name="login" value="SIGN IN">
         </form>
       </div>
       <div class="switch" id="switch-cnt">
