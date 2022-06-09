@@ -4,7 +4,7 @@ error_reporting(0);
 $serverName 		= "127.0.0.1";
 $serverUser  		= "root";
 $serverPass			= "";
-$serverDB			= "login";
+$serverDB			= "SRMS";
 
 
 // create connection variable
@@ -15,6 +15,10 @@ if ($conn->connect_error) {
 	die("
 		<center>
 			<h2>Connection Failure:".$conn->connect_error."</h2>
-		</center>
+		</center><?php
+		include('db.php');
+		
+		
+		?>
 	");
 }

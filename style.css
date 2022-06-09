@@ -89,17 +89,18 @@ body {
 }
 .form__input {
   width: 350px;
-  height: 40px;
+  height: 70px;
   margin: 4px 0;
   padding-left: 25px;
   font-size: 13px;
   letter-spacing: 0.15px;
-  border: none;
+  border: #181818;
   outline: none;
   font-family: "Montserrat", sans-serif;
   background-color: #ecf0f3;
   transition: 0.25s ease;
   border-radius: 8px;
+ 
   box-shadow: inset 2px 2px 4px #d1d9e6, inset -2px -2px 4px #f9f9f9;
 }
 .form__input:focus {
@@ -288,4 +289,22 @@ body {
   30%, 50% {
     width: 500px;
   }
+}
+
+input[type=file]::file-selector-button {
+  border: 2px solid #f8f7fa;
+  padding: .2em .4em;
+  border-radius: 8px;
+  background-color: #4b70e2;
+  transition: 1s;
+  color: #f9f9f9;
+  font-weight: 700;
+    font-size: 14px;
+    box-shadow: 8px 8px 16px #d1d9e6, -8px -8px 16px #f9f9f9;
+
+}
+
+input[type=file]::file-selector-button:hover {
+  background-color: #4b70e2;
+  border: 2px solid #fcfdfd;
 }

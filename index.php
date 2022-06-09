@@ -14,26 +14,54 @@
   <head>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="main.css"><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css"><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
   </head>
   <body>
     
     <div class="main">
       <div class="container a-container" id="a-container">
       
-        <form class="form" id="a-form" method="POST" action="gateway.php">
+        <form class="form" id="a-form" method="POST" action="gateway.php" enctype="multipart/form-data">
           <h2 class="form_title title">Create Account</h2>
           <?php include 'respond.php'; ?>
           <span class="form__span"></span>
-          <input type="text" class="form__input" name="name" id="name" placeholder="Full Name *" required="required" autocomplete="off" title="Insert Your Full Name Here">
+          <input type="text" class="form__input" name="name" id="name" placeholder="Full Name *" required="required" title="Insert Your Full Name Here">
 
-					<input type="text" class="form__input" name="email" id="email" placeholder="Email Address *" required="required" autocomplete="off" title="Insert Your Email Address Here">
+					<input type="text" class="form__input" name="email" id="email" placeholder="Email Address *" required="required" title="Insert Your Email Address">
+          
+          <input type="text" class="form__input" name="father_name" id="father_name" placeholder="Father Name *" required="required" title="Insert Your Father Name Here">
 
+					<input type="text" class="form__input" name="mother_name" id="mother_name" placeholder="Mother Name *" required="required" title="Insert Your Mother Name Here">
+
+          <input type="date" class="form__input" name="dob" id="dob" placeholder="Date of birth" required="required" title="Insert Year of Date of birth">
+
+          <input type="text" class="form__input" name="blood" id="blood" placeholder="Blood Group *" required="required" title="Insert Your Blood group">
+
+          <input type="number" class="form__input" name="yoa" id="yoa" min="2012" max="2022" placeholder="Year of Admission *" required="required" title="Insert Your Year of Admission here">
+
+          
+                <select class="form__input" name="branch" id="branch">
+                  <option class="form__input" value="" disabled selected>Select Branch</option>
+                  <option class="form__input" value="IT">IT</option>
+                  <option class="form__input" value="CS">CS</option>
+                  <option class="form__input" value="EEE">EEE</option>
+                  <option class="form__input" value="ME">ME</option>
+                  <option class="form__input" value="EC">EC</option>
+                </select>
+                <div class="select_arrow"></div>
+
+          <input type="number" class="form__input" name="semester" id="semester" min="1" max="8" placeholder="Current semester *" required="required" title="Insert Your current semester here"> 
+          
+          <label class="form__input" for="img">Upload your passport size image (.png/.jpeg/.jpg)
+          <input  type="file" id="img" name="img" accept="image/*">
+          </label>
 					<input type="password" class="form__input" name="password" id="password" placeholder="Password *" required="required" autocomplete="off" title="Insert Your Password Here">
 
 					<input type="password" class="form__input" name="cpassword" id="cpassword" placeholder="Confirm Password *" required="required" autocomplete="off" title="Re-Enter Your Password Here">
 
-					<input type="submit" class="switch__button button" name="signup" value="submit">
+				
+
+          <input type="submit" class="switch__button button" name="signup" value="submit">
          
         </form>
       </div>
@@ -41,8 +69,8 @@
         <form class="form" id="b-form" method="POST" action="login.php">
           <h2 class="form_title title">Sign in to Website</h2>
           <span class="form__span"></span>
-          <input type="text" class="form__input" name="email" id="email" placeholder="Email Address *" required="required" autocomplete="off" title="Insert Your Email Address Here">
-					<input type="password" class="form__input" name="password" id="password" placeholder="Password *" required="required" autocomplete="off" title="Insert Your Password Here">
+          <input type="text" class="form__input" name="email" id="email_login" placeholder="Email Address *" required="required" autocomplete="off" title="Insert Your Email Address Here">
+					<input type="password" class="form__input" name="password" id="password_login" placeholder="Password *" required="required" autocomplete="off" title="Insert Your Password Here">
 					<input type="submit" class="switch__button button" name="login" value="SIGN IN">
         </form>
       </div>
@@ -61,7 +89,7 @@
         </div>
       </div>
     </div>
-    <script src="main.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
 <!-- partial -->
