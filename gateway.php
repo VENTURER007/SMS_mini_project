@@ -74,52 +74,36 @@ if (isset($_POST['signup'])) {
 
 						$statusMsg = '';
 
-// File upload path
-$targetDir = "images/";
-$fileName = basename($_FILES["img"]["name"]);
-$targetFilePath = $targetDir . $fileName;
-$fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+					// File upload path
+					$targetDir = "images/";
+							$fileName = basename($_FILES["img"]["name"]);
+							$targetFilePath = $targetDir . $fileName;
+							$fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
 
 
-if(isset($_POST["signup"]) && !empty($_FILES["img"]["name"])){
+							if(isset($_POST["signup"]) && !empty($_FILES["img"]["name"])){
 	
 
-    // Allow certain file formats
-    $allowTypes = array('jpg','png','jpeg','gif','pdf');
-    if(in_array($fileType, $allowTypes)){
-        // Upload file to server
-		
-        if(move_uploaded_file($_FILES["img"]["tmp_name"], $targetFilePath)){
-            // Insert image file name into database
-            $insert = $conn->query("INSERT into images (image_name) VALUES ('$fileName')");
-            // if($insert){
-            //     $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
-            // }else{
-            //     $statusMsg = "File upload failed, please try again.";
-            // } 
-        }else{
-            $statusMsg = "Sorry, there was an error uploading your file.";
-			echo $statusMsg;
-        }
-    }else{
-        $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
-		echo $statusMsg;
-    }
-}else{
-    $statusMsg = 'Please select a file to upload.';
-	echo $statusMsg;
-}
+  						  // Allow certain file formats
+  						  $allowTypes = array('jpg','png','jpeg','gif','pdf');
 
+  						  if(in_array($fileType, $allowTypes)){
+    		    // Upload file to server
+	
+  						      if(move_uploaded_file($_FILES["img"]["tmp_name"], $targetFilePath)){
+			
+            		// Insert image file name into database
+  						        //   $insert = $conn->query("INSERT into users (image_name) VALUES ('$fileName')");
+			
+   						        //  if($insert){
+   						        //      $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
 
-
-
-
-
-
-
-
-
-							// Start inserting the user details in the database
+    						    //     }else{
+    						 	// 					           $statusMsg = "File upload failed, please try again.";
+								// 		exit();
+    						    //     } 
+			
+        // Start inserting the user details in the database
 
 							// hashed the user's password to the latest security
 							$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
@@ -133,7 +117,7 @@ if(isset($_POST["signup"]) && !empty($_FILES["img"]["name"])){
                             
 
 							// Creating the template for inserting details
-							$sql = "INSERT INTO `users` (name, email, password, reg_date, reg_time, dob, father_name, mother_name, blood_group, year_of_admission, course_name, current_semester) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+							$sql = "INSERT INTO `users` (name, email, password, reg_date, reg_time, dob, father_name, mother_name, blood_group, year_of_admission, course_name, current_semester, image_name) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 							
 							$stmt = mysqli_stmt_init($conn);
 							
@@ -148,7 +132,7 @@ if(isset($_POST["signup"]) && !empty($_FILES["img"]["name"])){
 
 								
 								// Replace the question mark with the appropriate information
-								mysqli_stmt_bind_param($stmt, "ssssssssssss", $fullName, $email, $hashedPassword, $currentDate, $currentTime, $dob, $father_name, $mother_name , $blood, $yoa, $branch, $semester );
+								mysqli_stmt_bind_param($stmt, "sssssssssssss", $fullName, $email, $hashedPassword, $currentDate, $currentTime, $dob, $father_name, $mother_name , $blood, $yoa, $branch, $semester, $fileName );
 							
 								$result = mysqli_stmt_execute($stmt);
 							
@@ -168,6 +152,43 @@ if(isset($_POST["signup"]) && !empty($_FILES["img"]["name"])){
 									exit();
 								}
 							}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		}else{
+            $statusMsg = "Sorry, there was an error uploading your file.";
+			echo $statusMsg;
+			exit();
+        }
+    }else{
+        $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
+		echo $statusMsg;
+		exit();
+    }
+}else{
+    $statusMsg = 'Please select a file to upload.';
+	echo $statusMsg;
+	exit();
+}
+
+
+
+
+
+
+
+
+
+
+							
 						}
 					}
 				}
@@ -187,3 +208,5 @@ mysqli_stmt_close($stmt);
 mysqli_close($conn);
 
 ?>
+
+

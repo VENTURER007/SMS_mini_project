@@ -15,6 +15,7 @@ if (!isset($_POST['login'])) {
 	$password 	= mysqli_real_escape_string($conn, $_POST['password']);
 
 	// Check if either one of the receiving information is empty
+	
 	if (empty($email) || empty($password)) {
 		// Redirect to login page and display error message
 	header("location: index.php?mg=empty");
@@ -67,6 +68,8 @@ if (!isset($_POST['login'])) {
 							$useremail 		= $row['email'];
 							$userpassword	= $row['password'];
 						}
+
+						
 						
 
 					
@@ -94,11 +97,10 @@ if (!isset($_POST['login'])) {
 							$_SESSION['loginEmail'] = $useremail; 
 							$_SESSION['role']		= "user"; 
 							// You can more based on your project 
-
+							
 							// Redirect to home page 
-							echo "login succesful";
-							exit();
-							header("location: home.php");
+							
+							header("location: /student_dashboard/student_dashboard.php");
 
 						}	
 
