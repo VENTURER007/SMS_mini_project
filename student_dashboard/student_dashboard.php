@@ -1,3 +1,17 @@
+<?php
+session_start();
+
+$user_id=$_SESSION['user_id'];
+$name=$_SESSION['loginName'];
+$email=$_SESSION['loginEmail'];
+$role=$_SESSION['role'];
+
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -15,7 +29,7 @@
     <?php  include 'display_image.php'; ?>
     <div class="ms-2">
       <h5 class="fs-6 mb-0">
-        <a class="text-decoration-none" href="#">Manikandan S</a>
+        <a class="text-decoration-none" href="#"><?php echo $name; ?></a>
       </h5>
       <p class="mt-1 mb-0">Hello its me.</p>
     </div>
