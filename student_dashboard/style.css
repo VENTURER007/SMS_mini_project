@@ -382,3 +382,45 @@ body {
 	text-decoration: none;
 	font-weight: bold;
 }
+
+.form__input{
+	align-items: center;
+	justify-content: center;
+	width:50%;
+	display:block;
+}
+
+
+/* .input__label{
+
+align-items: left;
+justify-content: center;
+
+
+
+} */
+
+.input__div{
+
+	font-family: "Convergence" , sans-serif;
+	display: none;
+	
+	
+	justify-content: center;
+	
+	align-items: left;
+	font-size: 1.2rem;
+	background-color: #2a2b3d;
+
+}
+
+label{
+
+color: #9CA3AF;
+
+}
+
+.button{
+	color: #9CA3AF;
+	background-color: #2a2b3d;
+}

@@ -2,7 +2,7 @@
 session_start();
 
 // Include the database configuration file
-        include 'db.php';
+        include '/home/venturer/SMS_mini_project/db.php';
 
         $useremail=$_SESSION['loginEmail'];        
 

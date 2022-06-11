@@ -67,6 +67,14 @@ if (!isset($_POST['login'])) {
 							$username 		= $row['name'];
 							$useremail 		= $row['email'];
 							$userpassword	= $row['password'];
+							$dob			= $row['dob'];
+							$father			= $row['father_name'];
+							$mother			= $row['mother_name'];
+							$blood			= $row['blood_group'];
+							$yoa			= $row['year_of_admission'];
+							$course			= $row['course_name'];
+							$semester		= $row['current_semester'];
+							
 						}
 
 						
@@ -95,7 +103,14 @@ if (!isset($_POST['login'])) {
 							$_SESSION['user_id'] 	= $uID; 
 							$_SESSION['loginName'] 	= $username; 
 							$_SESSION['loginEmail'] = $useremail; 
-							$_SESSION['role']		= "user"; 
+							$_SESSION['role']		= "user";
+							$_SESSION['dob'] 		= $dob;
+							$_SESSION['father'] 	= $father; 
+							$_SESSION['mother'] 	= $mother; 
+							$_SESSION['blood'] 		= $blood; 
+							$_SESSION['yoa'] 		= $yoa; 
+							$_SESSION['course'] 	= $course; 
+							$_SESSION['semester'] 	= $semester;  
 							// You can more based on your project 
 							
 							// Redirect to home page 
