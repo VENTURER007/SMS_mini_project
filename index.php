@@ -33,20 +33,20 @@
 
 					<input type="text" class="form__input" name="mother_name" id="mother_name" placeholder="Mother Name *" required="required" title="Insert Your Mother Name Here">
 
-          <input type="date" class="form__input" name="dob" id="dob" placeholder="Date of birth" required="required" title="Insert Year of Date of birth">
+          <input type="date" class="colour_c" name="dob" id="dob" placeholder="Date of birth" required="required" title="Insert Year of Date of birth">
 
           <input type="text" class="form__input" name="blood" id="blood" placeholder="Blood Group *" required="required" title="Insert Your Blood group">
 
           <input type="number" class="form__input" name="yoa" id="yoa" min="2012" max="2022" placeholder="Year of Admission *" required="required" title="Insert Your Year of Admission here">
 
           
-                <select class="form__input" name="branch" id="branch">
-                  <option class="form__input" value="" disabled selected>Select Branch</option>
-                  <option class="form__input" value="IT">IT</option>
-                  <option class="form__input" value="CS">CS</option>
-                  <option class="form__input" value="EEE">EEE</option>
-                  <option class="form__input" value="ME">ME</option>
-                  <option class="form__input" value="EC">EC</option>
+                <select class="colour_c" name="branch" id="branch">
+                  <option class=" colour_c" value="" disabled selected>Select Branch</option>
+                  <option class=" colour_c "value="IT">IT</option>
+                  <option class="colour_c value="CS">CS</option>
+                  <option class=" colour_c" value="EEE">EEE</option>
+                  <option class=" colour_c" value="ME">ME</option>
+                  <option class=" colour_c" value="EC">EC</option>
                 </select>
                 <div class="select_arrow"></div>
 
@@ -61,7 +61,7 @@
 
 				
 
-          <input type="submit" class="switch__button button" name="signup" value="submit">
+          <input type="submit" class="switch__button button1" name="signup" value="SIGN UP">
          
         </form>
       </div>
