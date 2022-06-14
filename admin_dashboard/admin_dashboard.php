@@ -1,45 +1,9 @@
-<?php
-
-include ('/home/venturer/SMS_mini_project/db.php');
-//starting session
-
-session_start();
-
-//store session variables
-
-$user_id=$_SESSION['user_id'];
-$name=$_SESSION['loginName'];
-$email=$_SESSION['loginEmail'];
-$role=$_SESSION['role'];
-$branch=$_SESSION['course'];
-
-// $sql = "SELECT * FROM users where email='$email'";
-// $result = mysqli_query($conn, $sql);
-// if(mysqli_num_rows($result) > 0){
-
-// while($row = mysqli_fetch_assoc($result)){
-
-
-
-// }
-
-// }
-
-
-
-
-
-
-?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Student Page</title>
+  <title>Admin Page</title>
   <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 <link rel='stylesheet' href='https://unicons.iconscout.com/release/v3.0.6/css/line.css'><link rel="stylesheet" href="./style.css">
@@ -51,72 +15,110 @@ $branch=$_SESSION['course'];
 <!-- partial:index.partial.html -->
 <aside class="sidebar position-fixed top-0 left-0 overflow-auto h-100 float-left" id="show-side-navigation1">
   <i class="uil-bars close-aside d-md-none d-lg-none" data-close="show-side-navigation1"></i>
-  <div class="sidebar-header d-flex justify-content-center align-items-center px-3 py-4">
-    <?php  include 'dashboard_elements.php'; ?>
+  <div class="sidebar-header d-flex align-items-left px-3 py-4">
+   
     <div class="ms-2">
       <h5 class="fs-6 mb-0">
-        <a class="text-decoration-none" href="#"><?php echo $name; ?></a>
+        <a class="text-decoration-none" href="#">Hi Admin</a>
       </h5>
-      <p class="mt-1 mb-0"><?php echo $branch; ?></p>
+      
     </div>
   </div>
 
   <div class="search position-relative text-center px-4 py-3 mt-2">
     <input type="text" class="form-control w-100 border-0 bg-transparent" placeholder="Search here">
-    <i class="fa fa-search position-absolute d-block fs-6"></i>
+    <i class="fa fa-search position-absolute d-block fs-6"></i>  
   </div>
 
   <ul class="categories list-unstyled">
-  <script>
+  <script type="text/javascript">
       function dashboard(){
 
-        document.getElementById("personal_details_div").style.display="none";
-        document.getElementById("academic_details_div").style.display="none";
+        document.getElementById("semester_div").style.display="none";
+        document.getElementById("branch_div").style.display="none";
+        
+        
 
 
       }
 
-      function personal_details(){
+      function get_branch_id(branch){
+      document.getElementById("semester_div").style.display="block";
+      document.getElementById("branch_div").style.display="none";
+      const course = new FormData();
+
+      course.append("branch" , branch);
+
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST" , "ajax.php" , true);
+      xhr.send(course);
+
+     }
+
+
+     function get_semester_id(sem){
+      document.getElementById("semester_div").style.display="block";
+      document.getElementById("branch_div").style.display="none";
+      const semester = new FormData();
+      semester.append("semester" , sem);
+
+      const xhr = new XMLHttpRequest();
       
-      document.getElementById("personal_details_div").style.display="block";
-      document.getElementById("academic_details_div").style.display="none";
-      
+      xhr.onload=function(){
+        
+      document.getElementById("table_div").style.display="block";
+      document.getElementById("semester_div").style.display="none";
+      document.getElementById("branch_div").style.display="none";
+
+      document.getElementById("table_div").innerHTML = xhr.responseText;
+
       }
       
-      function academic_details(){
+      xhr.open("POST" , "ajax.php" , true);
+      xhr.send(semester);
+    }
 
-        document.getElementById("personal_details_div").style.display="none";
-        document.getElementById("academic_details_div").style.display="block";
+
+    function table(){
+      document.getElementById("table_div").style.display="block";
+      document.getElementById("semester_div").style.display="none";
+      document.getElementById("branch_div").style.display="none";
+      
+
+    }
 
 
+      function records(){
+      
+      document.getElementById("branch_div").style.display="block";
+      
       }
+
+
+
+      
+      
       
       </script>
     <li >
       <i class="uil-estate fa-fw"></i><a class="button" onclick="dashboard();"> Dashboard</a>
       
      
-    <li >
-      <i class="uil-user"></i><a class="button" onclick="personal_details();" id="personal_details"> Personal Details</a>
-     
+  
+    <li class="">
+      <i class="uil-book-alt"></i><a class="button" onclick="records();" id="academic_details">Student Records</a>
       <ul class="sidebar-dropdown list-unstyled">
        
       </ul>
     </li>
     <li class="">
-      <i class="uil-book-alt"></i><a class="button" onclick="academic_details();" id="academic_details">Academic Details</a>
+      <i class="uil-layers"></i><a href="#">Publish CE marks</a>
       <ul class="sidebar-dropdown list-unstyled">
        
       </ul>
     </li>
     <li class="">
-      <i class="uil-layers"></i><a href="#">CE marks</a>
-      <ul class="sidebar-dropdown list-unstyled">
-       
-      </ul>
-    </li>
-    <li class="">
-      <i class="uil-layer-group"></i><a href="#">Results</a>
+      <i class="uil-layer-group"></i><a href="#"> Publish Results</a>
       <ul class="sidebar-dropdown list-unstyled">
         
       </ul>
@@ -172,28 +174,57 @@ $branch=$_SESSION['course'];
   <div class="p-4">
     <div class="welcome">
       <div class="content rounded-3 p-3">
-        <h1 class="fs-3">Welcome to Dashboard</h1>
-        <p class="mb-0">Hello <?php echo $name; ?>, welcome to your awesome dashboard!</p>
+        <h1 class="fs-3">Welcome to Admin Dashboard</h1>
+
+        <p class="mb-0">Hello Admin welcome to your dashboard!</p>
       </div>
     </div>
   </div>
-<div class="input__div" id='personal_details_div'>
+<div class="input__div" id='branch_div'>
     
-            <label for="email" class="input__label"> Email</label><input id="email"type="text" class="form__input" value = "<?php echo $_SESSION['loginEmail'];?>"><br>
-            <label for="dob" class="input__label"> Date of birth</label><input id="dob"type="text" class="form__input" value = "<?php echo $_SESSION['dob'];?>"><br>
-            <label for="father" class="input__label">Father name</label><input id="father"type="text" class="form__input" value = "<?php echo $_SESSION['father'];?>"><br>
-            <label for="mother" class="input__label">Mother name</label><input id="mother"type="text" class="form__input" value = "<?php echo $_SESSION['mother'];?>"><br>
-            <label for="blood" class="input__label"> Blood Group</label><input id="blood"type="text" class="form__input" value = "<?php echo $_SESSION['blood'];?>"><br>
+            <li name="cs" id="CS" onclick="get_branch_id(this.id);">BTECH-CS</li>
+            <br><br>
+            <li name="it" id="IT" onclick="get_branch_id(this.id);">BTECH-IT</li>
+            <br><br>
+            <li name="me" id="ME" onclick="get_branch_id(this.id);">BTECH-ME</li>
+            <br><br>
+            <li name="eee" id="EEE" onclick="get_branch_id(this.id);">BTECH-EEE</li>
+            <br><br>
+            <li name="ec" id="EC" onclick="get_branch_id(this.id);">BTECH-EC</li>
+            <br><br>
+            <li name="ce" id="CE" onclick="get_branch_id(this.id);">BTECH-CE</li>
+            
+            
             
 </div>
 
-<div class="input__div" id='academic_details_div'>
+<div class="input__div" id='semester_div'>
 
-<label for="email" class="input__label">Year of Admission</label><input  type="text" class="form__input" value = "<?php echo $_SESSION['yoa'];?>"><br>
-<label for="dob" class="input__label">Course</label><input type="text" class="form__input" value = "<?php echo $_SESSION['course'];?>"><br>
-<label for="blood" class="input__label">Semester</label><input  type="text" class="form__input" value = "<?php echo $_SESSION['semester'];?>"><br>
+<label onclick="get_semester_id(this.id);" id="1" name="">semester 1</label>
+<br><br>
+<label onclick="get_semester_id(this.id);" id="2" name="">semester 2</label>
+<br><br>
+<label onclick="get_semester_id(this.id);" id="3" name="">semester 3</label>
+<br><br>
+<label onclick="get_semester_id(this.id);" id="4" name="">semester 4</label>
+<br><br>
+<label onclick="get_semester_id(this.id);" id="5" name="">semester 5</label>
+<br><br>
+<label onclick="get_semester_id(this.id);" id="6" name="">semester 6</label>
+<br><br>
+<label onclick="get_semester_id(this.id);" id="7" name="">semester 7</label>
+<br><br>
+<label onclick="get_semester_id(this.id);" id="8" name="">semester 8</label>
+
 
 </div> 
+
+<div id ="table_div" class="table-wrapper">
+
+
+
+
+</div>
    
 </section>
 <!-- partial -->
