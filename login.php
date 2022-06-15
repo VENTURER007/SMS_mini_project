@@ -154,6 +154,6 @@ if (!isset($_POST['login'])) {
 
 // close connections
 mysqli_stmt_close($stmt);
-mysql_close($conn);
+mysqli_close($conn);
 
 ?>

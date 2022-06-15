@@ -2,8 +2,7 @@
 <?php           
                 session_start();    
                 include "/home/venturer/SMS_mini_project/db.php";
-                session_start();
-
+                
                  if(isset($_POST['branch'])){
 
                     $_SESSION['branch']=$_POST['branch'];
@@ -15,8 +14,7 @@
 
                 $_SESSION['semester']=$_POST['semester'];
                    
-                 $branch=$_SESSION['branch'];
-                 $semester=$_SESSION['semester'];
+                 
 
                  if(isset($_SESSION['branch'])&&isset($_SESSION['semester'])){
                      
@@ -31,7 +29,7 @@
 
                     ?>
 
-                 <h1>Student Records</h1>
+                 <h1 style="color:#ccd5db;">STUDENT RECORDS</h1>
                  <table id="fl-table"  class="fl-table">
                     <thead>
                     <tr>
@@ -46,6 +44,7 @@
                      <th>year of admission</th>
                      <th>branch</th>
                      <th>semester</th>
+                     <th>operations</th>
                     
                     </tr>
                     </thead><tbody>
@@ -67,7 +66,9 @@
                     echo "<td>";?><?php echo $row['year_of_admission'];  ?><?php  echo "</td>";
                     echo "<td>";?><?php echo $row['course_name'];  ?><?php  echo "</td>";
                     echo "<td>";?><?php echo $row['current_semester'];  ?><?php echo "</td>";
-                    echo "</tr>";
+                    echo "<td>";?><?php echo "<a href='update.php'data-toggle='tooltip' title='update' class='uil-edit'>
+                    <a href='delete.php' data-toggle='tooltip' title='delete' class='uil-trash-alt'>";?><?php echo "</td>";
+                    echo "</tr>";?><?php
                     
 
                
