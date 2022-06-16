@@ -19,7 +19,7 @@
    
     <div class="ms-2">
       <h5 class="fs-6 mb-0">
-        <a class="text-decoration-none" href="#">Hi Admin</a>
+        <a class="text-decoration-none" href="#"></a>
       </h5>
       
     </div>
@@ -175,11 +175,11 @@
   </nav>
 
   <div class="p-4">
-    <div class="welcome">
+    <div  class="welcome1" class="welcome">
       <div class="content rounded-3 p-3">
-        <h1 class="fs-3">Welcome to Admin Dashboard</h1>
+        <h1  class="dashcolour"  class="fs-3">Welcome to Admin Dashboard</h1>
 
-        <p class="mb-0">Hello Admin welcome to your dashboard!</p>
+        <p  class="dashcolour1" class="mb-0">Hello Admin welcome to your dashboard!</p>
       </div>
     </div>
   </div>
