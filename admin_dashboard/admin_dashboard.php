@@ -25,10 +25,7 @@
     </div>
   </div>
 
-  <div class="search position-relative text-center px-4 py-3 mt-2">
-    <input type="text" class="form-control w-100 border-0 bg-transparent" placeholder="Search here">
-    <i class="fa fa-search position-absolute d-block fs-6"></i>  
-  </div>
+  
 
   <ul class="categories list-unstyled">
   <script type="text/javascript">
@@ -185,17 +182,17 @@
   </div>
 <div class="input__div" id='branch_div'>
     
-            <li name="cs" id="CS" onclick="get_branch_id(this.id);">BTECH-CS</li>
-            <br><br>
-            <li name="it" id="IT" onclick="get_branch_id(this.id);">BTECH-IT</li>
-            <br><br>
-            <li name="me" id="ME" onclick="get_branch_id(this.id);">BTECH-ME</li>
-            <br><br>
-            <li name="eee" id="EEE" onclick="get_branch_id(this.id);">BTECH-EEE</li>
-            <br><br>
-            <li name="ec" id="EC" onclick="get_branch_id(this.id);">BTECH-EC</li>
-            <br><br>
-            <li name="ce" id="CE" onclick="get_branch_id(this.id);">BTECH-CE</li>
+            <label name="cs" id="CS" onclick="get_branch_id(this.id);">BTECH-CS</label>
+            <br>
+            <label name="it" id="IT" onclick="get_branch_id(this.id);">BTECH-IT</label>
+            <br>
+            <label name="me" id="ME" onclick="get_branch_id(this.id);">BTECH-ME</label>
+            <br>
+            <label name="eee" id="EEE" onclick="get_branch_id(this.id);">BTECH-EEE</label>
+            <br>
+            <label name="ec" id="EC" onclick="get_branch_id(this.id);">BTECH-EC</label>
+            <br>
+            <label name="ce" id="CE" onclick="get_branch_id(this.id);">BTECH-CE</label>
             
             
             
@@ -204,19 +201,19 @@
 <div class="input__div" id='semester_div'>
 
 <label onclick="get_semester_id(this.id);" id="1" name="">semester 1</label>
-<br><br>
+<br>
 <label onclick="get_semester_id(this.id);" id="2" name="">semester 2</label>
-<br><br>
+<br>
 <label onclick="get_semester_id(this.id);" id="3" name="">semester 3</label>
-<br><br>
+<br>
 <label onclick="get_semester_id(this.id);" id="4" name="">semester 4</label>
-<br><br>
+<br>
 <label onclick="get_semester_id(this.id);" id="5" name="">semester 5</label>
-<br><br>
+<br>
 <label onclick="get_semester_id(this.id);" id="6" name="">semester 6</label>
-<br><br>
+<br>
 <label onclick="get_semester_id(this.id);" id="7" name="">semester 7</label>
-<br><br>
+<br>
 <label onclick="get_semester_id(this.id);" id="8" name="">semester 8</label>
 
 

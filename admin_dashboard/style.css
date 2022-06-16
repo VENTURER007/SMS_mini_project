@@ -32,10 +32,12 @@ body {
 #wrapper {
 	margin-left: var(--sidebar-width);
 	transition: all .3s ease-in-out;
+	width:max-content;
 }
 
 #wrapper.fullwidth {
 	margin-left: 0;
+	
 }
 
 
@@ -298,7 +300,7 @@ body {
 .navbar .navbar-brand {line-height: 55px !important; padding: 0 !important}
 .navbar .navbar-brand:focus,
 .navbar .navbar-brand:hover {color: #FFF !important}
-.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {margin: 0 !important}
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {margin: 0  !important;}
 @media (max-width: 767px) {
 	.navbar>.container-fluid .navbar-brand {
 		margin-left: 15px !important;
@@ -439,6 +441,7 @@ body{
     font-family: Helvetica;
     -webkit-font-smoothing: antialiased;
     background: #2a2b3d;
+	width:auto;
 }
 h2{
     text-align: center;
@@ -470,6 +473,8 @@ h2{
     max-width: 100%;
     white-space: nowrap;
     background-color: white;
+	overflow-x: auto;
+    overflow-y: hidden;
 	
 }
 
@@ -506,12 +511,13 @@ h2{
         width: 100%;
     }
     .table-wrapper:before{
-        content: "Scroll horizontally >";
+        content: "";
         display: block;
         text-align: right;
         font-size: 11px;
         color: white;
         padding: 0 0 10px;
+		
     }
     .fl-table thead, .fl-table tbody, .fl-table thead th {
         display: block;
