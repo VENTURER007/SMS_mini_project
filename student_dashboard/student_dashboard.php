@@ -1,6 +1,6 @@
 <?php
 
-include ('/home/garuda/SMS_mini_project/db.php');
+include ('/home/venturer/SMS_mini_project/db.php');
 //starting session
 
 session_start();

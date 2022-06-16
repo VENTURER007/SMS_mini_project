@@ -28,7 +28,7 @@
                 if($query->num_rows>0){
 
                     ?>
-
+                  
                  <h1 style="color:#ccd5db;">STUDENT RECORDS</h1>
                  <table id="fl-table"  class="fl-table">
                     <thead>
@@ -36,7 +36,6 @@
                      <th>id</th>
                      <th>name</th>
                      <th>email</th>
-                     <th>password</th>
                      <th>Date of birth</th>
                      <th>Father name</th>
                      <th>Mother name</th>
@@ -55,19 +54,19 @@
                         
                     
                     echo "<tr>";                
-                    echo "<td>";?><?php echo $row['id']; ?> <?php echo "</td>";
-                    echo "<td>";?><?php echo $row['name'];  ?><?php  echo "</td>";
-                    echo "<td>";?><?php echo $row['email'];  ?><?php  echo"</td>";
-                    echo "<td>";?><?php echo $row['password'];  ?><?php  echo "</td>";
-                    echo "<td>";?><?php echo $row['dob'];  ?><?php echo "</td>";
-                    echo "<td>";?><?php echo $row['father_name'];  ?><?php  echo "</td>";
-                    echo "<td>";?><?php echo $row['mother_name'];  ?><?php  echo "</td>";
-                    echo "<td>";?><?php echo $row['blood_group'];  ?><?php  echo "</td>";
-                    echo "<td>";?><?php echo $row['year_of_admission'];  ?><?php  echo "</td>";
-                    echo "<td>";?><?php echo $row['course_name'];  ?><?php  echo "</td>";
-                    echo "<td>";?><?php echo $row['current_semester'];  ?><?php echo "</td>";
-                    echo "<td>";?><?php echo "<a href='update.php'data-toggle='tooltip' title='update' class='uil-edit'>
-                    <a href='delete.php' data-toggle='tooltip' title='delete' class='uil-trash-alt'>";?><?php echo "</td>";
+                    echo "<td>";?><?php $_SESSION['id']=$row['id'];echo $row['id']; ?> <?php echo "</td>";
+                    echo "<td>";?><?php $_SESSION['name']=$row['name'];echo $row['name'];  ?><?php  echo "</td>";
+                    echo "<td id='email'>";?><?php $_SESSION['email']=$row['email'];echo $row['email'];  ?><?php  echo"</td>";
+                   
+                    echo "<td>";?><?php $_SESSION['dob']=$row['dob'];echo $row['dob'];  ?><?php echo "</td>";
+                    echo "<td>";?><?php $_SESSION['father_name']=$row['father_name'];echo $row['father_name'];  ?><?php  echo "</td>";
+                    echo "<td>";?><?php $_SESSION['mother_name']=$row['mother_name'];echo $row['mother_name'];  ?><?php  echo "</td>";
+                    echo "<td>";?><?php $_SESSION['blood_group']=$row['blood_group'];echo $row['blood_group'];  ?><?php  echo "</td>";
+                    echo "<td>";?><?php $_SESSION['year_of_admission']=$row['year_of_admission'];echo $row['year_of_admission'];  ?><?php  echo "</td>";
+                    echo "<td>";?><?php $_SESSION['course_name']=$row['course_name'];echo $row['course_name'];  ?><?php  echo "</td>";
+                    echo "<td>";?><?php $_SESSION['semester']=$row['semester'];echo $row['current_semester'];  ?><?php echo "</td>";
+                    echo "<td>";?><?php echo "<a data-toggle='tooltip' title='update' id='update' onclick='update();' class='uil-edit'>
+                    <a  data-toggle='tooltip' title='delete' id='delete' class='uil-trash-alt'>";?><?php echo "</td>";
                     echo "</tr>";?><?php
                     
 

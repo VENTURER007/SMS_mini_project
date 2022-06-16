@@ -32,7 +32,7 @@ body {
 #wrapper {
 	margin-left: var(--sidebar-width);
 	transition: all .3s ease-in-out;
-	width:max-content;
+	
 }
 
 #wrapper.fullwidth {
@@ -279,6 +279,7 @@ body {
 .navbar {
 	background-color: var(--navbar-bg-color) !important;
 	border: none !important;
+	max-width: 1422px;
 }
 .navbar .dropdown-menu {
 	right: auto !important;
@@ -300,7 +301,9 @@ body {
 .navbar .navbar-brand {line-height: 55px !important; padding: 0 !important}
 .navbar .navbar-brand:focus,
 .navbar .navbar-brand:hover {color: #FFF !important}
-.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {margin: 0  !important;}
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {margin:0%
+	
+	 !important}
 @media (max-width: 767px) {
 	.navbar>.container-fluid .navbar-brand {
 		margin-left: 15px !important;
@@ -337,6 +340,10 @@ body {
 }
 .navbar .navbar-nav>li>a>i {
 	font-size: 18px !important;
+}
+
+.text-arrange{
+	padding-left: 25px;
 }
 
 
@@ -469,12 +476,12 @@ h2{
     font-weight: normal;
     border: none;
     border-collapse: collapse;
-    width: 100%;
+    width: max-content;
     max-width: 100%;
     white-space: nowrap;
     background-color: white;
 	overflow-x: auto;
-    overflow-y: hidden;
+	display: block;
 	
 }
 
@@ -509,6 +516,8 @@ h2{
     .fl-table {
         display: block;
         width: 100%;
+		overflow:auto;
+        white-space: nowrap;
     }
     .table-wrapper:before{
         content: "";

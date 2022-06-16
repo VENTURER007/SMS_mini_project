@@ -11,7 +11,7 @@
 <script src="https://code.jquery.com/jquery-latest.min.js"/>
 <script></script>
 </head>
-<body>
+<body  scroll="no" style="overflow: hidden">
 <!-- partial:index.partial.html -->
 <aside class="sidebar position-fixed top-0 left-0 overflow-auto h-100 float-left" id="show-side-navigation1">
   <i class="uil-bars close-aside d-md-none d-lg-none" data-close="show-side-navigation1"></i>
@@ -29,6 +29,9 @@
 
   <ul class="categories list-unstyled">
   <script type="text/javascript">
+
+
+
       function dashboard(){
 
         document.getElementById("semester_div").style.display="none";
@@ -94,19 +97,42 @@
       
       }
 
+      function update(){
+
+        var email = document.getElementById("email").value;
+        const data = new FormData();
+
+        
+
+
+const xhr = new XMLHttpRequest();
+
+
+xhr.onload=function(){
+  document.getElementById("table_div").style.display="none";  
+  document.getElementById("update_div").innerHTML = xhr.responseText;
+}
+data.append("email" , email);
+xhr.open("POST" , "update.php" , true);
+        xhr.send(data);
+
+}
+
+
+
 
 
       
-      
+     
       
       </script>
     <li >
-      <i class="uil-estate fa-fw"></i><a class="button" onclick="dashboard();"> Dashboard</a>
+      <i class="uil-estate fa-fw"></i><a  onclick="dashboard();"> Dashboard</a>
       
      
   
     <li class="">
-      <i class="uil-book-alt"></i><a class="button" onclick="records();" id="academic_details">Student Records</a>
+      <i class="uil-book-alt"></i><a  onclick="records();" id="academic_details">Student Records</a>
       <ul class="sidebar-dropdown list-unstyled">
        
       </ul>
@@ -134,7 +160,7 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#toggle-navbar" aria-controls="toggle-navbar" aria-expanded="false" aria-label="Toggle navigation">
           <i class="uil-bars text-white"></i>
         </button>
-        <a class="navbar-brand" href="#">Student Record Management<span class="main-color"> System</span></a>
+        <a class="navbar-brand"  class="text-arran" href="#">Student Record Management<span class="main-color"> System</span></a>
       </div>
       <div class="collapse navbar-collapse" id="toggle-navbar">
         <ul class="navbar-nav ms-auto">
@@ -225,14 +251,16 @@
 
 
 </div>
+
+
+<div id="update_div">
+
+</div>
    
 </section>
 <!-- partial -->
-<script>
-$(document).ready(function(){
-  $('[data-toggle="tooltip"]').tooltip();
-});
-</script>
+
+
   <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js'></script>
   <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script><script  src="./script.js"></script>
