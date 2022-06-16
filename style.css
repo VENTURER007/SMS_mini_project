@@ -75,6 +75,12 @@ body {
   width: 100%;
   height: 100%;
 }
+
+.title{
+  border-radius: 5px ;
+  width: 200px;
+}
+
 .form__icon {
   object-fit: contain;
   width: 30px;

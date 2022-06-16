@@ -11,7 +11,7 @@
 <script src="https://code.jquery.com/jquery-latest.min.js"/>
 <script></script>
 </head>
-<body>
+<body  scroll="no" style="overflow: hidden">
 <!-- partial:index.partial.html -->
 <aside class="sidebar position-fixed top-0 left-0 overflow-auto h-100 float-left" id="show-side-navigation1">
   <i class="uil-bars close-aside d-md-none d-lg-none" data-close="show-side-navigation1"></i>
@@ -137,7 +137,7 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#toggle-navbar" aria-controls="toggle-navbar" aria-expanded="false" aria-label="Toggle navigation">
           <i class="uil-bars text-white"></i>
         </button>
-        <a class="navbar-brand" href="#">Student Record Management<span class="main-color"> System</span></a>
+        <a class="navbar-brand"  class="text-arran" href="#">Student Record Management<span class="main-color"> System</span></a>
       </div>
       <div class="collapse navbar-collapse" id="toggle-navbar">
         <ul class="navbar-nav ms-auto">

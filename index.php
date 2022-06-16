@@ -2,10 +2,9 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>SRMS</title>
+  <title>Student Record Mangement System</title>
   <link rel="stylesheet" href="./style.css">
-  <link rel="shortcut icon" href="https://imgs.search.brave.com/mxUi3SedBJ0ulvsEYukW8BaIAOaY4OEie0gWUqtlIP8/rs:fit:711:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5V/Vy1JRWRhSmJHcU4z/Mm5GVlYxU0p3SGFF/OCZwaWQ9QXBp">
-
+  <link   class="title" rel="shortcut icon" href="https://w7.pngwing.com/pngs/461/735/png-transparent-education-uganda-management-institute-school-student-shivaji-hat-orange-logo.png">
 </head>
 <body>
 <!-- partial:index.partial.html -->

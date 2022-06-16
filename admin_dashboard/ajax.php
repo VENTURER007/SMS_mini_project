@@ -1,7 +1,7 @@
 
 <?php           
                 session_start();    
-                include "/home/venturer/SMS_mini_project/db.php";
+                include "/home/garuda/SMS_mini_project/db.php";
                 
                  if(isset($_POST['branch'])){
 
