@@ -11,15 +11,15 @@
 <script src="https://code.jquery.com/jquery-latest.min.js"/>
 <script></script>
 </head>
-<body  scroll="no" style="overflow: hidden">
+<body  scroll="no" style="overflow: auto;">
 <!-- partial:index.partial.html -->
 <aside class="sidebar position-fixed top-0 left-0 overflow-auto h-100 float-left" id="show-side-navigation1">
-  <i class="uil-bars close-aside d-md-none d-lg-none" data-close="show-side-navigation1"></i>
+  <i class="uil-bars close-aside d-md-none d-lg-none "  data-close="show-side-navigation1"></i>
   <div class="sidebar-header d-flex align-items-left px-3 py-4">
    
     <div class="ms-2">
       <h5 class="fs-6 mb-0">
-        <a class="text-decoration-none" href="#">Hi Admin</a>
+        <a class="text-decoration-none" href="#"></a>
       </h5>
       
     </div>
@@ -97,28 +97,359 @@
       
       }
 
-      function update(){
-
-        var email = document.getElementById("email").value;
-        const data = new FormData();
-
+      function update(index){
         
+        
+        
+        const data = new FormData();
+        const xhr = new XMLHttpRequest();
+                
+        
+       var email= document.getElementById(index).dataset.value;
+        
+        
+        
+        xhr.onload=function(){
+        
+          
+          
+          document.getElementById("table_div").style.display="none";  
+          document.getElementById("update_div").innerHTML = xhr.responseText;
+        }
+        
+        data.append("index" , email);
+        
+        xhr.open("POST" , "update.php" , true);
+                xhr.send(data);
+        
+        }
 
 
-const xhr = new XMLHttpRequest();
+function delete_records(){
 
+  var email = document.getElementById("id").textContent;
+  const data = new FormData();
+  const xhr = new XMLHttpRequest();
 
 xhr.onload=function(){
+    document.getElementById("table_div").style.display="block";  
+    document.getElementById("update_div").style.display="none";
+    document.getElementById("table_div").innerHTML = xhr.responseText;
+  }
+  data.append("email2" , email);
+  xhr.open("POST" , "delete.php" , true);
+  xhr.send(data);
+
+}
+
+function ce_marks_branch(branch){
+    document.getElementById("table_div").style.display="none";  
+    document.getElementById("update_div").style.display="none";
+    document.getElementById("branch_div").style.display="none";  
+    document.getElementById("semester_div").style.display="none";
+    document.getElementById("result_branch_div").style.display="none";  
+    document.getElementById("ce_mark_branch_div").style.display="none";
+    document.getElementById("result_semester_div").style.display="none";  
+    document.getElementById("ce_mark_semester_div").style.display="block";
+
+
+  const data = new FormData();
+  const xhr = new XMLHttpRequest();
+
+
+  data.append("branch" , branch);
+  xhr.open("POST" , "ce_mark.php" , true);
+  xhr.send(data);
+    
+}
+
+
+
+function results_branch(branch){
   document.getElementById("table_div").style.display="none";  
-  document.getElementById("update_div").innerHTML = xhr.responseText;
-}
-data.append("email" , email);
-xhr.open("POST" , "update.php" , true);
-        xhr.send(data);
+    document.getElementById("update_div").style.display="none";
+    document.getElementById("branch_div").style.display="none";  
+    document.getElementById("semester_div").style.display="none";
+    document.getElementById("result_branch_div").style.display="none";  
+    document.getElementById("ce_mark_branch_div").style.display="none";
+    document.getElementById("result_semester_div").style.display="block";  
+    document.getElementById("ce_mark_semester_div").style.display="none";
+    const data = new FormData();
+  const xhr = new XMLHttpRequest();
+
+
+  data.append("branch" , branch);
+  xhr.open("POST" , "result.php" , true);
+  xhr.send(data);
+    
 
 }
 
 
+function ce_marks_semester(semester){
+
+    document.getElementById("table_div").style.display="none";  
+    document.getElementById("update_div").style.display="none";
+    document.getElementById("branch_div").style.display="none";  
+    document.getElementById("semester_div").style.display="none";
+    document.getElementById("result_branch_div").style.display="none";  
+    document.getElementById("ce_mark_branch_div").style.display="none";
+    document.getElementById("result_semester_div").style.display="none";  
+    document.getElementById("ce_mark_semester_div").style.display="none";
+    document.getElementById("ce_mark_div").style.display="block";
+
+    const data = new FormData();
+  const xhr = new XMLHttpRequest();
+
+  xhr.onload=function(){
+
+    document.getElementById("ce_mark_div").innerHTML = xhr.responseText;
+
+  }
+
+
+  data.append("semester" , semester);
+  xhr.open("POST" , "ce_mark.php" , true);
+  xhr.send(data);
+
+
+
+
+}
+
+function results_semester(semester){
+  document.getElementById("table_div").style.display="none";  
+    document.getElementById("update_div").style.display="none";
+    document.getElementById("branch_div").style.display="none";  
+    document.getElementById("semester_div").style.display="none";
+    document.getElementById("result_branch_div").style.display="none";  
+    document.getElementById("ce_mark_branch_div").style.display="none";
+    document.getElementById("result_semester_div").style.display="none";  
+    document.getElementById("ce_mark_semester_div").style.display="none";
+    const data = new FormData();
+  const xhr = new XMLHttpRequest();
+
+  xhr.onload=function(){
+
+    document.getElementById("results_div").innerHTML = xhr.responseText;
+
+  }
+
+
+  data.append("semester" , semester);
+  xhr.open("POST" , "result.php" , true);
+  xhr.send(data);
+}
+
+function ce_marks(){
+
+    document.getElementById("table_div").style.display="none";  
+    document.getElementById("update_div").style.display="none";
+    document.getElementById("branch_div").style.display="none";  
+    document.getElementById("semester_div").style.display="none";
+    document.getElementById("result_branch_div").style.display="none";  
+    document.getElementById("ce_mark_branch_div").style.display="block";
+    document.getElementById("result_semester_div").style.display="none";  
+    document.getElementById("ce_mark_semester_div").style.display="none";
+
+}
+
+function subject(event){
+
+event.preventDefault();
+var subject = document.getElementById("subject_input").value;
+
+
+
+const data = new FormData();
+const xhr = new XMLHttpRequest();
+
+  xhr.onload=function(){
+
+    document.getElementById("response").innerHTML = xhr.responseText;
+
+  }
+
+
+  data.append("subject" , subject);
+  xhr.open("POST" , "ce_mark_publish.php" , true);
+  xhr.send(data);
+
+
+
+}
+
+
+function enter_ce_mark(event,n){
+
+  event.preventDefault();
+  const data = new FormData();
+  const xhr = new XMLHttpRequest();
+  var classes = document.getElementsByClassName("ce_mark_input");
+  
+  var input = document.getElementsByName('array[]');
+ var marks=[];
+ for (var i = 0; i < input.length; i++) {
+     
+    var a = input[i];
+     let k =  a.value;
+    marks.push(k);
+    
+}
+var id=[];
+for (var i = 0; i < classes.length; i++) {
+     
+     var a = classes[i];
+      let k =  a.dataset.value;
+     id.push(k);
+     
+ }
+
+xhr.onload=function(){
+
+document.getElementById("response").innerHTML = xhr.responseText;
+
+document.getElementById("table_div").style.display="none";  
+    document.getElementById("update_div").style.display="none";
+    document.getElementById("branch_div").style.display="none";  
+    document.getElementById("semester_div").style.display="none";
+    document.getElementById("result_branch_div").style.display="none";  
+    document.getElementById("ce_mark_branch_div").style.display="none";
+    document.getElementById("result_semester_div").style.display="none";  
+    document.getElementById("ce_mark_semester_div").style.display="none";
+    document.getElementById("ce_mark_div").style.display="none";
+
+}
+
+var json={
+"marks": marks,
+"id":id
+};
+//  var json[markss] = JSON.stringify(marks);
+//   json[idss] = JSON.stringify(id);
+
+json_string=JSON.stringify(json);
+ 
+ console.log(json_string);
+ 
+ xhr.open("POST" , "ce_mark_add.php" , true);
+ xhr.setRequestHeader('Content-Type',"application/json");
+
+ 
+ 
+ 
+  
+  xhr.send(json_string);
+
+}
+
+
+function results(){
+
+  document.getElementById("table_div").style.display="none";  
+    document.getElementById("update_div").style.display="none";
+    document.getElementById("branch_div").style.display="none";  
+    document.getElementById("semester_div").style.display="none";
+    document.getElementById("result_branch_div").style.display="block";  
+    document.getElementById("ce_mark_branch_div").style.display="none";
+    document.getElementById("result_semester_div").style.display="none";  
+    document.getElementById("ce_mark_semester_div").style.display="none";
+
+
+}
+
+function subject_result(event){
+
+event.preventDefault();
+var subject = document.getElementById("subject_input").value;
+var exam = document.getElementById("exam_input").value;
+
+
+
+const data = new FormData();
+const xhr = new XMLHttpRequest();
+
+  xhr.onload=function(){
+
+    document.getElementById("response").innerHTML = xhr.responseText;
+
+  }
+
+
+  data.append("subject" , subject);
+  data.append("exam",exam)
+
+  xhr.open("POST" , "result_add.php" , true);
+  xhr.send(data);
+
+
+
+}
+
+
+function enter_result(event,n){
+
+  event.preventDefault();
+  const data = new FormData();
+  const xhr = new XMLHttpRequest();
+  var classes = document.getElementsByClassName("exam_mark_input");
+  
+  var input = document.getElementsByName('array[]');
+ var marks=[];
+ for (var i = 0; i < input.length; i++) {
+     
+    var a = input[i];
+     let k =  a.value;
+    marks.push(k);
+    
+}
+var id=[];
+for (var i = 0; i < classes.length; i++) {
+     
+     var a = classes[i];
+      let k =  a.dataset.value;
+     id.push(k);
+     
+ }
+
+xhr.onload=function(){
+
+document.getElementById("response").innerHTML = xhr.responseText;
+
+document.getElementById("table_div").style.display="none";  
+    document.getElementById("update_div").style.display="none";
+    document.getElementById("branch_div").style.display="none";  
+    document.getElementById("semester_div").style.display="none";
+    document.getElementById("result_branch_div").style.display="none";  
+    document.getElementById("ce_mark_branch_div").style.display="none";
+    document.getElementById("result_semester_div").style.display="none";  
+    document.getElementById("ce_mark_semester_div").style.display="none";
+    document.getElementById("ce_mark_div").style.display="none";
+
+}
+
+var json={
+"marks": marks,
+"id":id
+};
+//  var json[markss] = JSON.stringify(marks);
+//   json[idss] = JSON.stringify(id);
+
+json_string=JSON.stringify(json);
+ 
+ console.log(json_string);
+ 
+ xhr.open("POST" , "result_publish.php" , true);
+ xhr.setRequestHeader('Content-Type',"application/json");
+
+ 
+ 
+ 
+  
+  xhr.send(json_string);
+
+
+}
 
 
 
@@ -127,24 +458,24 @@ xhr.open("POST" , "update.php" , true);
       
       </script>
     <li >
-      <i class="uil-estate fa-fw"></i><a  onclick="dashboard();"> Dashboard</a>
+      <i class="uil-estate fa-fw"></i><a style="color: var(--dk-gray-400);"   onclick="dashboard();"> Dashboard</a>
       
      
   
     <li class="">
-      <i class="uil-book-alt"></i><a  onclick="records();" id="academic_details">Student Records</a>
+      <i class="uil-book-alt"></i><a style="color: var(--dk-gray-400);"   onclick="records();" id="academic_details">Student Records</a>
       <ul class="sidebar-dropdown list-unstyled">
        
       </ul>
     </li>
     <li class="">
-      <i class="uil-layers"></i><a href="#">Publish CE marks</a>
+      <i class="uil-layers"></i><a href="#"  onclick="ce_marks();" id="ce_marks">Publish CE marks</a>
       <ul class="sidebar-dropdown list-unstyled">
        
       </ul>
     </li>
     <li class="">
-      <i class="uil-layer-group"></i><a href="#"> Publish Results</a>
+      <i class="uil-layer-group"></i><a href="#" onclick="results();" id="results"> Publish Results</a>
       <ul class="sidebar-dropdown list-unstyled">
         
       </ul>
@@ -155,7 +486,7 @@ xhr.open("POST" , "update.php" , true);
 
 <section id="wrapper">
   <nav class="navbar navbar-expand-md">
-    <div class="container-fluid mx-2">
+    <div class="container-fluid">
       <div class="navbar-header">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#toggle-navbar" aria-controls="toggle-navbar" aria-expanded="false" aria-label="Toggle navigation">
           <i class="uil-bars text-white"></i>
@@ -182,14 +513,15 @@ xhr.open("POST" , "update.php" , true);
           </li>
          
           <li class="nav-item">
-            <a class="logout" href="">Logout</a>
-            <a class="nav-link" href="logout.php"><i class="uil-sign-out-alt"></i></a>
+            
+            <a class="nav-link" href="logout.php"><i style="color: #1963ec;" class="uil-sign-out-alt"></i></a>
             
             
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">
-              <i data-show="show-side-navigation1" class="uil-bars show-side-btn"></i>
+              <i data-show="show-side-navigation1" style="
+    color: #1963ec;" class="uil-bars show-side-btn"></i>
             </a>
           </li>
         </ul>
@@ -198,27 +530,67 @@ xhr.open("POST" , "update.php" , true);
   </nav>
 
   <div class="p-4">
-    <div class="welcome">
+    <div  class="welcome1" class="welcome">
       <div class="content rounded-3 p-3">
-        <h1 class="fs-3">Welcome to Admin Dashboard</h1>
+          <h1  class="dashcolour" style="
+          font-size: calc(1.375rem + 0.5vw);"  class="fs-3">Welcome to Admin Dashboard</h1>
 
-        <p class="mb-0">Hello Admin welcome to your dashboard!</p>
+          <p  class="dashcolour1" class="mb-0">Hello Admin welcome to your dashboard!</p>
+          <p id="response"></p>
+          <?php include 'respond.php';?>
       </div>
     </div>
   </div>
 <div class="input__div" id='branch_div'>
     
-            <label name="cs" id="CS" onclick="get_branch_id(this.id);">BTECH-CS</label>
+            <label class="label_input" name="cs" id="CS" onclick="get_branch_id(this.id);">BTECH-CS</label>
             <br>
-            <label name="it" id="IT" onclick="get_branch_id(this.id);">BTECH-IT</label>
+            <label class="label_input" name="it" id="IT" onclick="get_branch_id(this.id);">BTECH-IT</label>
             <br>
-            <label name="me" id="ME" onclick="get_branch_id(this.id);">BTECH-ME</label>
+            <label class="label_input" name="me" id="ME" onclick="get_branch_id(this.id);">BTECH-ME</label>
             <br>
-            <label name="eee" id="EEE" onclick="get_branch_id(this.id);">BTECH-EEE</label>
+            <label class="label_input" name="eee" id="EEE" onclick="get_branch_id(this.id);">BTECH-EEE</label>
             <br>
-            <label name="ec" id="EC" onclick="get_branch_id(this.id);">BTECH-EC</label>
+            <label class="label_input" name="ec" id="EC" onclick="get_branch_id(this.id);">BTECH-EC</label>
             <br>
-            <label name="ce" id="CE" onclick="get_branch_id(this.id);">BTECH-CE</label>
+            <label class="label_input" name="ce" id="CE" onclick="get_branch_id(this.id);">BTECH-CE</label>
+            
+            
+            
+</div>
+
+
+<div class="input__div" id="ce_mark_branch_div">
+    
+            <label class="label_input" name="cs" id="CS" onclick="ce_marks_branch(this.id);">BTECH-CS</label>
+            <br>
+            <label class="label_input" name="it" id="IT" onclick="ce_marks_branch(this.id);">BTECH-IT</label>
+            <br>
+            <label class="label_input" name="me" id="ME" onclick="ce_marks_branch(this.id);">BTECH-ME</label>
+            <br>
+            <label class="label_input" name="eee" id="EEE" onclick="ce_marks_branch(this.id);">BTECH-EEE</label>
+            <br>
+            <label class="label_input" name="ec" id="EC" onclick="ce_marks_branch(this.id);">BTECH-EC</label>
+            <br>
+            <label class="label_input" name="ce" id="CE" onclick="ce_marks_branch(this.id);">BTECH-CE</label>
+            
+            
+            
+</div>
+
+<div class="input__div" id="result_branch_div">
+    
+            <label class="label_input" name="cs" id="CS" onclick="results_branch(this.id);">BTECH-CS</label>
+            <br>
+            <label class="label_input" name="it" id="IT" onclick="results_branch(this.id);">BTECH-IT</label>
+            <br>
+            <label class="label_input" name="me" id="ME" onclick="results_branch(this.id);">BTECH-ME</label>
+            <br>
+            <label class="label_input" name="eee" id="EEE" onclick="results_branch(this.id);">BTECH-EEE</label>
+            <br>
+            <label class="label_input" name="ec" id="EC" onclick="results_branch(this.id);">BTECH-EC</label>
+            <br>
+            <label class="label_input" name="ce" id="CE" onclick="results_branch(this.id);">BTECH-CE</label>
             
             
             
@@ -226,25 +598,67 @@ xhr.open("POST" , "update.php" , true);
 
 <div class="input__div" id='semester_div'>
 
-<label onclick="get_semester_id(this.id);" id="1" name="">semester 1</label>
+<label class="label_input" onclick="get_semester_id(this.id);" id="1" name="">semester 1</label>
 <br>
-<label onclick="get_semester_id(this.id);" id="2" name="">semester 2</label>
+<label class="label_input" onclick="get_semester_id(this.id);" id="2" name="">semester 2</label>
 <br>
-<label onclick="get_semester_id(this.id);" id="3" name="">semester 3</label>
+<label class="label_input" onclick="get_semester_id(this.id);" id="3" name="">semester 3</label>
 <br>
-<label onclick="get_semester_id(this.id);" id="4" name="">semester 4</label>
+<label class="label_input" onclick="get_semester_id(this.id);" id="4" name="">semester 4</label>
 <br>
-<label onclick="get_semester_id(this.id);" id="5" name="">semester 5</label>
+<label class="label_input" onclick="get_semester_id(this.id);" id="5" name="">semester 5</label>
 <br>
-<label onclick="get_semester_id(this.id);" id="6" name="">semester 6</label>
+<label class="label_input" onclick="get_semester_id(this.id);" id="6" name="">semester 6</label>
 <br>
-<label onclick="get_semester_id(this.id);" id="7" name="">semester 7</label>
+<label class="label_input" onclick="get_semester_id(this.id);" id="7" name="">semester 7</label>
 <br>
-<label onclick="get_semester_id(this.id);" id="8" name="">semester 8</label>
+<label class="label_input" onclick="get_semester_id(this.id);" id="8" name="">semester 8</label>
 
 
 </div> 
 
+
+<div class="input__div" id='ce_mark_semester_div'>
+
+<label class="label_input" onclick="ce_marks_semester(this.id);" id="1" name="">semester 1</label>
+<br>
+<label class="label_input" onclick="ce_marks_semester(this.id);" id="2" name="">semester 2</label>
+<br>
+<label class="label_input" onclick="ce_marks_semester(this.id);" id="3" name="">semester 3</label>
+<br>
+<label class="label_input" onclick="ce_marks_semester(this.id);" id="4" name="">semester 4</label>
+<br>
+<label class="label_input" onclick="ce_marks_semester(this.id);" id="5" name="">semester 5</label>
+<br>
+<label class="label_input" onclick="ce_marks_semester(this.id);" id="6" name="">semester 6</label>
+<br>
+<label class="label_input" onclick="ce_marks_semester(this.id);" id="7" name="">semester 7</label>
+<br>
+<label class="label_input" onclick="ce_marks_semester(this.id);" id="8" name="">semester 8</label>
+
+
+</div> 
+
+<div class="input__div" id='result_semester_div'>
+
+<label class="label_input" onclick="results_semester(this.id);" id="1" name="">semester 1</label>
+<br>
+<label class="label_input" onclick="results_semester(this.id);" id="2" name="">semester 2</label>
+<br>
+<label class="label_input" onclick="results_semester(this.id);" id="3" name="">semester 3</label>
+<br>
+<label class="label_input" onclick="results_semester(this.id);" id="4" name="">semester 4</label>
+<br>
+<label class="label_input" onclick="results_semester(this.id);" id="5" name="">semester 5</label>
+<br>
+<label class="label_input" onclick="results_semester(this.id);" id="6" name="">semester 6</label>
+<br>
+<label class="label_input" onclick="results_semester(this.id);" id="7" name="">semester 7</label>
+<br>
+<label class="label_input" onclick="results_semester(this.id);" id="8" name="">semester 8</label>
+
+
+</div> 
 <div id ="table_div" class="table-wrapper">
 
 
@@ -252,6 +666,8 @@ xhr.open("POST" , "update.php" , true);
 
 </div>
 
+<div class="table-wrapper" id="ce_mark_div"></div>
+<div class="table-wrapper" id="results_div"></div>
 
 <div id="update_div">
 

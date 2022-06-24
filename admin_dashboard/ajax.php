@@ -29,7 +29,7 @@
 
                     ?>
                   
-                 <h1 style="color:#ccd5db;">STUDENT RECORDS</h1>
+                 <h1 style="color:#1963ec;; margin: 12px;">STUDENT RECORDS</h1>
                  <table id="fl-table"  class="fl-table">
                     <thead>
                     <tr>
@@ -49,24 +49,27 @@
                     </thead><tbody>
                 
 <?php
+
+                     $id=1;
+                     $row=1;
                     while($row=$query->fetch_assoc()):
 
                         
                     
-                    echo "<tr>";                
-                    echo "<td>";?><?php $_SESSION['id']=$row['id'];echo $row['id']; ?> <?php echo "</td>";
-                    echo "<td>";?><?php $_SESSION['name']=$row['name'];echo $row['name'];  ?><?php  echo "</td>";
-                    echo "<td id='email'>";?><?php $_SESSION['email']=$row['email'];echo $row['email'];  ?><?php  echo"</td>";
+                    echo "<tr id='"; echo $id++; ?><?php echo "'>";                
+                    echo "<td  id='id"; echo $id++; ?><?php echo "'>";?><?php echo $row['id']; ?> <?php echo "</td>";
+                    echo "<td id='name"; echo $id++; ?><?php echo "'>";?><?php echo $row['name'];  ?><?php  echo "</td>";
+                    echo "<td id='email"; echo $id++; ?><?php echo "'>";?><?php echo $row['email'];  ?><?php  echo"</td>";
                    
-                    echo "<td>";?><?php $_SESSION['dob']=$row['dob'];echo $row['dob'];  ?><?php echo "</td>";
-                    echo "<td>";?><?php $_SESSION['father_name']=$row['father_name'];echo $row['father_name'];  ?><?php  echo "</td>";
-                    echo "<td>";?><?php $_SESSION['mother_name']=$row['mother_name'];echo $row['mother_name'];  ?><?php  echo "</td>";
-                    echo "<td>";?><?php $_SESSION['blood_group']=$row['blood_group'];echo $row['blood_group'];  ?><?php  echo "</td>";
-                    echo "<td>";?><?php $_SESSION['year_of_admission']=$row['year_of_admission'];echo $row['year_of_admission'];  ?><?php  echo "</td>";
-                    echo "<td>";?><?php $_SESSION['course_name']=$row['course_name'];echo $row['course_name'];  ?><?php  echo "</td>";
-                    echo "<td>";?><?php $_SESSION['semester']=$row['semester'];echo $row['current_semester'];  ?><?php echo "</td>";
-                    echo "<td>";?><?php echo "<a data-toggle='tooltip' title='update' id='update' onclick='update();' class='uil-edit'>
-                    <a  data-toggle='tooltip' title='delete' id='delete' class='uil-trash-alt'>";?><?php echo "</td>";
+                    echo "<td id='dob"; echo $id++; ?><?php echo "'>";?><?php echo $row['dob'];  ?><?php echo "</td>";
+                    echo "<td id='father_name"; echo $id++; ?><?php echo "'>";?><?php echo $row['father_name'];  ?><?php  echo "</td>";
+                    echo "<td id='mother_name"; echo $id++; ?><?php echo "'>";?><?php echo $row['mother_name'];  ?><?php  echo "</td>";
+                    echo "<td id='blood"; echo $id++; ?><?php echo "'>";?><?php echo $row['blood_group'];  ?><?php  echo "</td>";
+                    echo "<td id='yoa"; echo $id++; ?><?php echo "'>";?><?php echo $row['year_of_admission'];  ?><?php  echo "</td>";
+                    echo "<td id='branch"; echo $id++; ?><?php echo "'>";?><?php echo $row['course_name'];  ?><?php  echo "</td>";
+                    echo "<td id='semester"; echo $id++; ?><?php echo "'>";?><?php echo $row['current_semester'];  ?><?php echo "</td>";
+                    echo "<td>";?><?php echo "<a data-toggle='tooltip' title='update'id='update"; echo $id++; ?><?php echo "' data-value='";?><?php echo $row['email']; ; ?><?php echo "'";?><?php echo " onclick='update(this.id);' class='uil-edit'>
+                    <a  data-toggle='tooltip' href='delete.php?id=";?><?php echo $row['id']; ?><?php echo "' title='delete' id='delete' onclick='delete_records();' class='uil-trash-alt'>";?><?php echo "</td>";
                     echo "</tr>";?><?php
                     
 
