@@ -297,11 +297,22 @@ let semester = document.getElementById("semester").value;
             <label for="father" class="input__label">Father name</label><input id="father"type="text" class="form__input" value = "<?php echo $_SESSION['father'];?>"><br>
             <label for="mother" class="input__label">Mother name</label><input id="mother"type="text" class="form__input" value = "<?php echo $_SESSION['mother'];?>"><br>
             <label for="blood" class="input__label"> Blood Group</label><input id="blood"type="text" class="form__input" value = "<?php echo $_SESSION['blood'];?>"><br>
+            <label for="mobile" class="input__label"> Mobile number</label><input id="mobile"type="text" class="form__input" value = "<?php echo $_SESSION['mobile'];?>"><br>
+            <div class="input_field radio_option">
+            <label for="gender" class="input__label">Gender</label> <br> 
+            <input type="Radio" name='g' value="male" id="rd1">
+              <label for="rd1">Male</label>
+              <input type="Radio" name='g' value="female" id="rd2">
+              <label for="rd2">Female</label>
+              </div><br>
+            <label for="address" class="input__label">Address</label><input id="address"type="textarea" style="
+	height: 150px;" class="form__input" value = "<?php echo $_SESSION['address'];?>"><br>
             <button id="personal_button" onclick="personal_update();">update</button>
 </div>
 
 <div class="input__div" id='academic_details_div'>
 
+<label for="register_no" class="input__label">Register No</label><input id="register_no"  type="text" class="form__input" value = "<?php echo $_SESSION['register_no'];?>"><br>
 <label for="email" class="input__label">Year of Admission</label><input id="yoa"  type="text" class="form__input" value = "<?php echo $_SESSION['yoa'];?>"><br>
 <label for="dob" class="input__label">Course</label><input id="branch" type="text" class="form__input" value = "<?php echo $_SESSION['course'];?>"><br>
 <label for="blood" class="input__label">Semester</label><input id="semester"  type="text" class="form__input" value = "<?php echo $_SESSION['semester'];?>"><br>

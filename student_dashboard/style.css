@@ -462,6 +462,11 @@ color: var(--dk-gray-400);
   outline: none;
 }
 
+textarea {
+	width: 300px;
+	height: 150px;
+  }
+
 .button:hover {
 	box-shadow: 6px 6px 10px #d1d9e6, -6px -6px 10px #f9f9f9;
 	transform: scale(0.985);

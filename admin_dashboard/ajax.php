@@ -69,7 +69,7 @@
                     echo "<td id='branch"; echo $id++; ?><?php echo "'>";?><?php echo $row['course_name'];  ?><?php  echo "</td>";
                     echo "<td id='semester"; echo $id++; ?><?php echo "'>";?><?php echo $row['current_semester'];  ?><?php echo "</td>";
                     echo "<td>";?><?php echo "<a data-toggle='tooltip' title='update'id='update"; echo $id++; ?><?php echo "' data-value='";?><?php echo $row['email']; ; ?><?php echo "'";?><?php echo " onclick='update(this.id);' class='uil-edit'>
-                    <a  data-toggle='tooltip' href='delete.php?id=";?><?php echo $row['id']; ?><?php echo "' title='delete' id='delete' onclick='delete_records();' class='uil-trash-alt'>";?><?php echo "</td>";
+                    <a  data-toggle='tooltip' onclick='delete_records(";?><?php echo $row['id']; ?><?php echo ");' title='delete' id='delete'  class='uil-trash-alt'>";?><?php echo "</td>";
                     echo "</tr>";?><?php
                     
 

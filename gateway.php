@@ -10,8 +10,8 @@ if (isset($_POST['signup'])) {
 	$email 			= mysqli_real_escape_string($conn, $_POST['email']);
 	$password		= mysqli_real_escape_string($conn, $_POST['password']);
 	$cPassword		= mysqli_real_escape_string($conn, $_POST['cpassword']);
-	$father_name 	= mysqli_real_escape_string($conn, $_POST['father_name']);
-	$mother_name	= mysqli_real_escape_string($conn, $_POST['mother_name']);
+	$father_name 	= mysqli_real_escape_string($conn, $_POST['father']);
+	$mother_name	= mysqli_real_escape_string($conn, $_POST['mother']);
 	$dob			= mysqli_real_escape_string($conn, $_POST['dob']);
 	$blood			= mysqli_real_escape_string($conn, $_POST['blood']);
 	$yoa			= mysqli_real_escape_string($conn, $_POST['yoa']);
@@ -19,13 +19,22 @@ if (isset($_POST['signup'])) {
 	$semester		= mysqli_real_escape_string($conn, $_POST['semester']);
 	$image			= mysqli_real_escape_string($conn, $_POST['img']);
 
+	$gender			= mysqli_real_escape_string($conn, $_POST['gender']);
+
+	$mobile			= mysqli_real_escape_string($conn, $_POST['mobile']);
+	$address			= mysqli_real_escape_string($conn, $_POST['address']);
+	$plustwo_cert			= mysqli_real_escape_string($conn, $_POST['plustwo_cert']);
+
+
+
+
 
 
 	
 	
 
 	// Check if either of the items are empty
-	if (empty($fullName) || empty($email) || empty($password) || empty($cPassword) || empty($father_name) || empty($mother_name) || empty($dob) || empty($blood) || empty($yoa) || empty($branch) || empty($semester)) {
+	if (empty($fullName) || empty($email) || empty($password) || empty($cPassword) || empty($father_name) || empty($mother_name) || empty($dob) || empty($blood) || empty($yoa) || empty($branch) || empty($semester) || empty($mobile) || empty($address) || empty($gender)) {
 		// If one found empty redirect user back to the signup page
 		header("location: index.php?mg=empty");
 		exit();
@@ -55,7 +64,7 @@ if (isset($_POST['signup'])) {
 					// Check if the request is ready
 					if (!mysqli_stmt_prepare($checkStmt, $check)) {
 						// If it is not ready redirect the user back to previous page
-						header("location: signup.php?mg=sqlError");
+						header("location: index.php?mg=sqlError");
 						exit();
 					}else {
 						mysqli_stmt_bind_param($checkStmt, "s", $email);
@@ -65,7 +74,7 @@ if (isset($_POST['signup'])) {
 						// Check if there is any rows with the email
 						if ($resultCheck > 0) {
 							// if found redirect user back
-							header("location: signup.php?mg=dublicateEmail");
+							header("location: index.php?mg=dublicateEmail");
 							exit();
 						}else{
 						
@@ -73,25 +82,34 @@ if (isset($_POST['signup'])) {
 							//file uploading
 
 						$statusMsg = '';
+						$statusMsg2 = '';
 
 					// File upload path
 					$targetDir = "images/";
+					$targetDir2 = "plustwo_cert/";
 							$fileName = basename($_FILES["img"]["name"]);
+							$fileName2 = basename($_FILES["plustwo_cert"]["name"]);
 							$targetFilePath = $targetDir . $fileName;
+							$targetFilePath2 = $targetDir2 . $fileName2;
 							$fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+							$fileType2 = pathinfo($targetFilePath2,PATHINFO_EXTENSION);
 
-
-							if(isset($_POST["signup"]) && !empty($_FILES["img"]["name"])){
+							// echo $_FILES["img"]["name"];
+							// echo $_FILES["plustwo_cert"]["name"];
+							//  exit();
+							if(isset($_POST["signup"]) && !empty($_FILES["img"]["name"]) && !empty($_FILES["plustwo_cert"]["name"])){
 	
 
   						  // Allow certain file formats
   						  $allowTypes = array('jpg','png','jpeg','gif','pdf');
 
-  						  if(in_array($fileType, $allowTypes)){
+  						  if(in_array($fileType, $allowTypes) && in_array($fileType2, $allowTypes)){
     		    // Upload file to server
 	
-  						      if(move_uploaded_file($_FILES["img"]["tmp_name"], $targetFilePath)){
+  						      if(move_uploaded_file($_FILES["img"]["tmp_name"], $targetFilePath) && move_uploaded_file($_FILES["plustwo_cert"]["tmp_name"], $targetFilePath2)){
 			
+
+
             		// Insert image file name into database
   						        //   $insert = $conn->query("INSERT into users (image_name) VALUES ('$fileName')");
 			
@@ -114,11 +132,12 @@ if (isset($_POST['signup'])) {
 							$currentTime = date('h:i:s A');
 
 							
-                            
+                            // $sql = "INSERT INTO `users` (`name`, `email`, `password`, `reg_date`, `reg_time`, `dob`, `father_name`, `mother_name`, `blood_group`, `year_of_admission`, `course_name`, `current_semester`, `image_name`, `mobile_no`, `cert_name`, `address`, `gender`)
 
 							// Creating the template for inserting details
-							$sql = "INSERT INTO `users` (name, email, password, reg_date, reg_time, dob, father_name, mother_name, blood_group, year_of_admission, course_name, current_semester, image_name) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+							$sql = "INSERT INTO `users` (name, email, password, reg_date, reg_time, dob, father_name, mother_name, blood_group, year_of_admission, course_name, current_semester, image_name, mobile_no, cert_name, address, gender) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 							
+							// echo $sql;exit;
 							$stmt = mysqli_stmt_init($conn);
 							
 
@@ -131,8 +150,31 @@ if (isset($_POST['signup'])) {
 							}else {
 
 								
+// 								echo $fullName;
+// 								echo $email;
+// 								echo $hashedPassword;
+// 								echo $currentDate;
+// 								echo $cuurrentTime;
+// 								echo $dob;
+// 								echo $father_name;
+// 								echo $mother_name;
+// 								echo $blood;
+// 								echo $yoa;
+// 								echo $branch;
+// 								echo $semester;
+// 								echo $fileName;
+// 								echo $mobile;
+// 								echo $fileName2;
+// 								echo $address;
+// 								echo $gender;
+
+// exit();
+
+
+
+								
 								// Replace the question mark with the appropriate information
-								mysqli_stmt_bind_param($stmt, "sssssssssssss", $fullName, $email, $hashedPassword, $currentDate, $currentTime, $dob, $father_name, $mother_name , $blood, $yoa, $branch, $semester, $fileName );
+								mysqli_stmt_bind_param($stmt, "sssssssssssssssss", $fullName, $email, $hashedPassword, $currentDate, $currentTime, $dob, $father_name, $mother_name , $blood, $yoa, $branch, $semester, $fileName, $mobile, $fileName2, $address, $gender );
 							
 								$result = mysqli_stmt_execute($stmt);
 							

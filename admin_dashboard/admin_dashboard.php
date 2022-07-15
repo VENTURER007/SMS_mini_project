@@ -34,9 +34,17 @@
 
       function dashboard(){
 
-        document.getElementById("semester_div").style.display="none";
-        document.getElementById("branch_div").style.display="none";
         
+    document.getElementById("table_div").style.display="none";  
+    document.getElementById("update_div").style.display="none";
+    document.getElementById("branch_div").style.display="none";  
+    document.getElementById("semester_div").style.display="none";
+    document.getElementById("result_branch_div").style.display="none";  
+    document.getElementById("ce_mark_branch_div").style.display="none";
+    document.getElementById("result_semester_div").style.display="none"; 
+    document.getElementById("ce_mark_semester_div").style.display="none";
+      document.getElementById("results_div").style.display="none";
+      document.getElementById("ce_mark_div").style.display="none";  
         
 
 
@@ -44,7 +52,17 @@
 
       function get_branch_id(branch){
       document.getElementById("semester_div").style.display="block";
-      document.getElementById("branch_div").style.display="none";
+      
+           
+    document.getElementById("table_div").style.display="none";  
+    document.getElementById("update_div").style.display="none";
+    document.getElementById("branch_div").style.display="none";  
+    document.getElementById("results_div").style.display="none";
+    document.getElementById("ce_mark_div").style.display="none";
+    document.getElementById("result_branch_div").style.display="none";  
+    document.getElementById("ce_mark_branch_div").style.display="none";
+    document.getElementById("result_semester_div").style.display="none"; 
+    document.getElementById("ce_mark_semester_div").style.display="none";
       const course = new FormData();
 
       course.append("branch" , branch);
@@ -58,8 +76,19 @@
 
      function get_semester_id(sem){
       document.getElementById("semester_div").style.display="block";
-      document.getElementById("branch_div").style.display="none";
-      
+     
+
+           
+    document.getElementById("table_div").style.display="none";  
+    document.getElementById("update_div").style.display="none";
+    document.getElementById("branch_div").style.display="none";  
+    
+    document.getElementById("result_branch_div").style.display="none";  
+    document.getElementById("ce_mark_branch_div").style.display="none";
+    document.getElementById("result_semester_div").style.display="none"; 
+    document.getElementById("ce_mark_semester_div").style.display="none";
+     document.getElementById("results_div").style.display="none";
+     document.getElementById("ce_mark_div").style.display="none"; 
       const semester = new FormData();
 
       semester.append("semester" , sem);
@@ -68,10 +97,16 @@
       
       xhr.onload=function(){
         
-      document.getElementById("table_div").style.display="block";
-      document.getElementById("semester_div").style.display="none";
-      document.getElementById("branch_div").style.display="none";
-
+    document.getElementById("table_div").style.display="block"; 
+    document.getElementById("update_div").style.display="none";
+    document.getElementById("branch_div").style.display="none";  
+    document.getElementById("semester_div").style.display="none";
+    document.getElementById("result_branch_div").style.display="none";  
+    document.getElementById("ce_mark_branch_div").style.display="none";
+    document.getElementById("result_semester_div").style.display="none"; 
+    document.getElementById("ce_mark_semester_div").style.display="none";
+document.getElementById("results_div").style.display="none";
+document.getElementById("ce_mark_div").style.display="none";
       document.getElementById("table_div").innerHTML = xhr.responseText;
 
       }
@@ -84,9 +119,18 @@
 
     function table(){
       document.getElementById("table_div").style.display="block";
-      document.getElementById("semester_div").style.display="none";
-      document.getElementById("branch_div").style.display="none";
       
+           
+   
+    document.getElementById("update_div").style.display="none";
+    document.getElementById("branch_div").style.display="none";  
+    document.getElementById("semester_div").style.display="none";
+    document.getElementById("result_branch_div").style.display="none";  
+    document.getElementById("ce_mark_branch_div").style.display="none";
+    document.getElementById("result_semester_div").style.display="none"; 
+    document.getElementById("ce_mark_semester_div").style.display="none";
+     document.getElementById("results_div").style.display="none";
+     document.getElementById("ce_mark_div").style.display="none"; 
 
     }
 
@@ -94,7 +138,17 @@
       function records(){
       
       document.getElementById("branch_div").style.display="block";
-      
+           
+    document.getElementById("table_div").style.display="none";  
+    document.getElementById("update_div").style.display="none";
+     
+    document.getElementById("semester_div").style.display="none";
+    document.getElementById("result_branch_div").style.display="none";  
+    document.getElementById("ce_mark_branch_div").style.display="none";
+    document.getElementById("result_semester_div").style.display="none"; 
+    document.getElementById("ce_mark_semester_div").style.display="none";
+     document.getElementById("results_div").style.display="none";
+     document.getElementById("ce_mark_div").style.display="none"; 
       }
 
       function update(index){
@@ -114,6 +168,17 @@
           
           
           document.getElementById("table_div").style.display="none";  
+               
+    
+    document.getElementById("update_div").style.display="none";
+    document.getElementById("branch_div").style.display="none";  
+    document.getElementById("semester_div").style.display="none";
+    document.getElementById("result_branch_div").style.display="none";  
+    document.getElementById("ce_mark_branch_div").style.display="none";
+    document.getElementById("result_semester_div").style.display="none"; 
+    document.getElementById("ce_mark_semester_div").style.display="none";
+document.getElementById("results_div").style.display="none";
+document.getElementById("ce_mark_div").style.display="none";
           document.getElementById("update_div").innerHTML = xhr.responseText;
         }
         
@@ -125,18 +190,26 @@
         }
 
 
-function delete_records(){
+function delete_records(id){
 
-  var email = document.getElementById("id").textContent;
+  
   const data = new FormData();
   const xhr = new XMLHttpRequest();
-
-xhr.onload=function(){
+  
+  xhr.onload=function(){
     document.getElementById("table_div").style.display="block";  
+    
     document.getElementById("update_div").style.display="none";
-    document.getElementById("table_div").innerHTML = xhr.responseText;
+    document.getElementById("branch_div").style.display="none";  
+    document.getElementById("semester_div").style.display="none";
+    document.getElementById("result_branch_div").style.display="none";  
+    document.getElementById("ce_mark_branch_div").style.display="none";
+    document.getElementById("result_semester_div").style.display="none"; 
+    document.getElementById("ce_mark_semester_div").style.display="none";
+    document.getElementById("table_div").innerHTML = xhr.responseText;document.getElementById("results_div").style.display="none";
+    document.getElementById("ce_mark_div").style.display="none";
   }
-  data.append("email2" , email);
+  data.append("id" , id);
   xhr.open("POST" , "delete.php" , true);
   xhr.send(data);
 
@@ -151,7 +224,8 @@ function ce_marks_branch(branch){
     document.getElementById("ce_mark_branch_div").style.display="none";
     document.getElementById("result_semester_div").style.display="none";  
     document.getElementById("ce_mark_semester_div").style.display="block";
-
+document.getElementById("results_div").style.display="none";
+document.getElementById("ce_mark_div").style.display="none";
 
   const data = new FormData();
   const xhr = new XMLHttpRequest();
@@ -174,7 +248,8 @@ function results_branch(branch){
     document.getElementById("ce_mark_branch_div").style.display="none";
     document.getElementById("result_semester_div").style.display="block";  
     document.getElementById("ce_mark_semester_div").style.display="none";
-    const data = new FormData();
+    document.getElementById("results_div").style.display="none";
+    document.getElementById("ce_mark_div").style.display="none";const data = new FormData();
   const xhr = new XMLHttpRequest();
 
 
@@ -197,6 +272,7 @@ function ce_marks_semester(semester){
     document.getElementById("result_semester_div").style.display="none";  
     document.getElementById("ce_mark_semester_div").style.display="none";
     document.getElementById("ce_mark_div").style.display="block";
+document.getElementById("results_div").style.display="none";
 
     const data = new FormData();
   const xhr = new XMLHttpRequest();
@@ -226,7 +302,8 @@ function results_semester(semester){
     document.getElementById("ce_mark_branch_div").style.display="none";
     document.getElementById("result_semester_div").style.display="none";  
     document.getElementById("ce_mark_semester_div").style.display="none";
-    const data = new FormData();
+    document.getElementById("results_div").style.display="block";
+    document.getElementById("ce_mark_div").style.display="none";const data = new FormData();
   const xhr = new XMLHttpRequest();
 
   xhr.onload=function(){
@@ -251,7 +328,8 @@ function ce_marks(){
     document.getElementById("ce_mark_branch_div").style.display="block";
     document.getElementById("result_semester_div").style.display="none";  
     document.getElementById("ce_mark_semester_div").style.display="none";
-
+document.getElementById("results_div").style.display="none";
+document.getElementById("ce_mark_div").style.display="none";
 }
 
 function subject(event){
@@ -281,6 +359,17 @@ const xhr = new XMLHttpRequest();
 
 
 function enter_ce_mark(event,n){
+
+  document.getElementById("table_div").style.display="none";  
+    document.getElementById("update_div").style.display="none";
+    document.getElementById("branch_div").style.display="none";  
+    document.getElementById("semester_div").style.display="none";
+    document.getElementById("result_branch_div").style.display="none";  
+    document.getElementById("ce_mark_branch_div").style.display="none";
+    document.getElementById("result_semester_div").style.display="none";  
+    document.getElementById("ce_mark_semester_div").style.display="none";
+    document.getElementById("ce_mark_div").style.display="none";
+    document.getElementById("results_div").style.display="none";
 
   event.preventDefault();
   const data = new FormData();
@@ -318,6 +407,8 @@ document.getElementById("table_div").style.display="none";
     document.getElementById("result_semester_div").style.display="none";  
     document.getElementById("ce_mark_semester_div").style.display="none";
     document.getElementById("ce_mark_div").style.display="none";
+    document.getElementById("results_div").style.display="none";
+    document.getElementById("ce_mark_div").style.display="none";
 
 }
 
@@ -354,7 +445,8 @@ function results(){
     document.getElementById("ce_mark_branch_div").style.display="none";
     document.getElementById("result_semester_div").style.display="none";  
     document.getElementById("ce_mark_semester_div").style.display="none";
-
+document.getElementById("results_div").style.display="none";
+document.getElementById("ce_mark_div").style.display="none";
 
 }
 
@@ -425,7 +517,8 @@ document.getElementById("table_div").style.display="none";
     document.getElementById("result_semester_div").style.display="none";  
     document.getElementById("ce_mark_semester_div").style.display="none";
     document.getElementById("ce_mark_div").style.display="none";
-
+document.getElementById("results_div").style.display="none";
+document.getElementById("ce_mark_div").style.display="none";
 }
 
 var json={

@@ -1,9 +1,10 @@
 <?php
 session_start();
 include "/home/venturer/SMS_mini_project/db.php";
-$_SESSION['email2']=$_POST['email2'];
-$email=$_SESSION['email2'];
-$id=$_GET['id'];
+
+$id=$_POST['id'];
+
+if(isset($id)){
 
 
 
@@ -89,7 +90,7 @@ if($query->num_rows>0){
 
 
 
-    header("location:admin_dashboard.php?mg=deleteSuccess");
+
     exit();
 }
 
@@ -102,10 +103,17 @@ if($query->num_rows>0){
 
 }else{
 
-    echo "Records not deleted..Something went wrong!";
+    echo "Records not deleted..Something went wrong!".$query;
     exit();
 }
 
+
+}
+
+}else{
+
+echo $email.$id;
+exit();
 
 }
 
