@@ -14,18 +14,19 @@
 
                 $_SESSION['semester']=$_POST['semester'];
                    
-                 
+                 }
 
                  if(isset($_SESSION['branch'])&&isset($_SESSION['semester'])){
                      
                     $branch=$_SESSION['branch'];
                     $semester=$_SESSION['semester'];
                  
-                
 
-                $query=$conn->query("SELECT id,name,email,password,dob,father_name,mother_name,blood_group,year_of_admission,course_name,current_semester FROM users WHERE course_name='".$branch."' AND current_semester='".$semester."';");
+                $query=$conn->query("SELECT * FROM users WHERE course_name='".$branch."' AND current_semester='".$semester."';");
                 
                 if($query->num_rows>0){
+                  // echo "working";
+                  // exit();
 
                     ?>
                   
@@ -42,9 +43,11 @@
                      <th>blood group</th>
                      <th>year of admission</th>
                      <th>branch</th>
-                     <th>semester</th>
+                     <th>semester</th>     
+                     <th>gender</th>
+                     <th>mobile</th>
+                     <th>address</th>
                      <th>operations</th>
-                    
                     </tr>
                     </thead><tbody>
                 
@@ -68,6 +71,9 @@
                     echo "<td id='yoa"; echo $id++; ?><?php echo "'>";?><?php echo $row['year_of_admission'];  ?><?php  echo "</td>";
                     echo "<td id='branch"; echo $id++; ?><?php echo "'>";?><?php echo $row['course_name'];  ?><?php  echo "</td>";
                     echo "<td id='semester"; echo $id++; ?><?php echo "'>";?><?php echo $row['current_semester'];  ?><?php echo "</td>";
+                    echo "<td id='gender"; echo $id++; ?><?php echo "'>";?><?php echo $row['gender'];  ?><?php echo "</td>";
+                    echo "<td id='mobile"; echo $id++; ?><?php echo "'>";?><?php echo $row['mobile_no'];  ?><?php echo "</td>";
+                    echo "<td id='address"; echo $id++; ?><?php echo "'>";?><?php echo $row['address'];  ?><?php echo "</td>";
                     echo "<td>";?><?php echo "<a data-toggle='tooltip' title='update'id='update"; echo $id++; ?><?php echo "' data-value='";?><?php echo $row['email']; ; ?><?php echo "'";?><?php echo " onclick='update(this.id);' class='uil-edit'>
                     <a  data-toggle='tooltip' onclick='delete_records(";?><?php echo $row['id']; ?><?php echo ");' title='delete' id='delete'  class='uil-trash-alt'>";?><?php echo "</td>";
                     echo "</tr>";?><?php
@@ -79,7 +85,7 @@
                     }
 
         }
-    }
+    
 
 
 ?>

@@ -92,7 +92,7 @@
 					elseif ($message == "logout") {
 						echo "
 							<div class='success-respond'>
-								<p>Yah! You have successfully logout...</p>
+								<p>Yah! You have successfully logged out...</p>
 							</div>
 						";
 					}

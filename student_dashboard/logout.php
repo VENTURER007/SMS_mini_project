@@ -1,8 +1,9 @@
 <?php
 
-$_SESSION['user'] = "none";
+
 
 session_start();
+$_SESSION['user'] = "none";
 session_unset();
 session_destroy();
 

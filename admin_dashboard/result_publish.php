@@ -84,7 +84,7 @@ if(isset($exam_id)&&isset($marks)&&isset($_SESSION['subject_id'])&&isset($ids)&&
                             // If the query run successfully redirect the user to login page and display success message
                             echo "
                     <div class='success-respond'>
-                        <p>CE marks updated successfully!</p>
+                        <p>Marks updated successfully!</p>
                     </div>
                 ";
                 
@@ -100,5 +100,7 @@ if(isset($exam_id)&&isset($marks)&&isset($_SESSION['subject_id'])&&isset($ids)&&
                         }
                                     
 
+                    }else{
+                        echo "something went wrong!";
                     }
 ?>

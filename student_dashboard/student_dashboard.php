@@ -12,6 +12,9 @@ $name=$_SESSION['loginName'];
 $email=$_SESSION['loginEmail'];
 $role=$_SESSION['role'];
 $branch=$_SESSION['course'];
+$mobile=$_SESSION['mobile'];
+$address=$_SESSION['address'];
+$gender=$_SESSION['gender'];
 
 // $sql = "SELECT * FROM users where email='$email'";
 // $result = mysqli_query($conn, $sql);
@@ -158,24 +161,39 @@ function personal_update(){
 
 const data = new FormData();
 const xhr = new XMLHttpRequest();
+let update = document.getElementById("personal_button").value;
+let name = document.getElementById("name").value;
 let email = document.getElementById("email").value;
 let dob = document.getElementById("dob").value;
 let father = document.getElementById("father").value;
 let mother = document.getElementById("mother").value;
 let blood = document.getElementById("blood").value;
+let mobile = document.getElementById("mobile").value;
+let address = document.getElementById("address").value;
+var gender = document.querySelector('input[name="g"]:checked').value;
+
 
   xhr.onload=function(){
 
-    document.getElementById("personal_details_div").innerHTML = xhr.responseText;
+    // location.reload();
+    // document.getElementById("personal_details").click();
+    
+    personal_details();
+    window.alert("Personal details updated sucessfully!")
+
+    // document.getElementById("personal_details_div").innerHTML = xhr.responseText;
 
   }
-
-
+  data.append("update",update)
+  data.append("name",name);
   data.append("email" , email);
   data.append("dob" , dob);
   data.append("father" , father);
   data.append("mother" , mother);
   data.append("blood" , blood);
+  data.append("mobile", mobile);
+  data.append("address", address);
+  data.append("gender", gender);
   xhr.open("POST" , "update.php" , true);
   xhr.send(data);
 
@@ -191,8 +209,10 @@ let semester = document.getElementById("semester").value;
 
   xhr.onload=function(){
 
-    document.getElementById("academic_details_div").innerHTML = xhr.responseText;
-
+    window.alert("Academic details updated sucessfully!")
+    // document.getElementById("academic_details_div").innerHTML = xhr.responseText;
+    // academic_details();
+    // alert("Academic details updated sucessfully!");
   }
 
 
@@ -291,7 +311,7 @@ let semester = document.getElementById("semester").value;
     </div>
   </div>
 <div class="input__div" id='personal_details_div'>
-    
+            <label for="name" class="input__label">Name</label><input type="text" class="form__input" id="name" placeholder="Full Name *" value = "<?php echo $_SESSION['loginName'];?>" ><br>
             <label for="email" class="input__label"> Email</label><input id="email"type="text" class="form__input" value = "<?php echo $_SESSION['loginEmail'];?>"><br>
             <label for="dob" class="input__label"> Date of birth</label><input id="dob"type="text" class="form__input" value = "<?php echo $_SESSION['dob'];?>"><br>
             <label for="father" class="input__label">Father name</label><input id="father"type="text" class="form__input" value = "<?php echo $_SESSION['father'];?>"><br>
@@ -300,32 +320,29 @@ let semester = document.getElementById("semester").value;
             <label for="mobile" class="input__label"> Mobile number</label><input id="mobile"type="text" class="form__input" value = "<?php echo $_SESSION['mobile'];?>"><br>
             <div class="input_field radio_option">
             <label for="gender" class="input__label">Gender</label> <br> 
-            <input type="Radio" name='g' value="male" id="rd1">
+            <input type="Radio" name='g' value="male" id="rd1" <?php if($_SESSION['gender']=="male"){ echo "checked";} ?>>
               <label for="rd1">Male</label>
-              <input type="Radio" name='g' value="female" id="rd2">
+              <input type="Radio" name='g' value="female" id="rd2"  <?php if($_SESSION['gender']=="female"){ echo "checked";} ?>>
               <label for="rd2">Female</label>
               </div><br>
             <label for="address" class="input__label">Address</label><input id="address"type="textarea" style="
 	height: 150px;" class="form__input" value = "<?php echo $_SESSION['address'];?>"><br>
-            <button id="personal_button" onclick="personal_update();">update</button>
+            <button id="personal_button" value="update" onclick="personal_update();">update</button>
 </div>
 
 <div class="input__div" id='academic_details_div'>
 
-<label for="register_no" class="input__label">Register No</label><input id="register_no"  type="text" class="form__input" value = "<?php echo $_SESSION['register_no'];?>"><br>
+
 <label for="email" class="input__label">Year of Admission</label><input id="yoa"  type="text" class="form__input" value = "<?php echo $_SESSION['yoa'];?>"><br>
 <label for="dob" class="input__label">Course</label><input id="branch" type="text" class="form__input" value = "<?php echo $_SESSION['course'];?>"><br>
 <label for="blood" class="input__label">Semester</label><input id="semester"  type="text" class="form__input" value = "<?php echo $_SESSION['semester'];?>"><br>
-<button id="academic_button" onclick="academic_update();">update</button>
+<button id="academic_button"  onclick="academic_update();">update</button>
 </div> 
 
 
 <div class="table_wrapper" style="color: var(--dk-gray-400);
     margin-left: 21px;" id='ce_mark_div'>
- 
-      
-    
-    
+
   </div>
 
     <div style="color: var(--dk-gray-400);

@@ -36,26 +36,26 @@ if (isset($_POST['signup'])) {
 	// Check if either of the items are empty
 	if (empty($fullName) || empty($email) || empty($password) || empty($cPassword) || empty($father_name) || empty($mother_name) || empty($dob) || empty($blood) || empty($yoa) || empty($branch) || empty($semester) || empty($mobile) || empty($address) || empty($gender)) {
 		// If one found empty redirect user back to the signup page
-		header("location: index.php?mg=empty");
+		echo("fill all the columns to signup");
 		exit();
 	}else {
 		// Check if both password are correct
 		if ($password !== $cPassword) {
 			// If not thesame redirect user back to the previous page
-			header("location: index.php?mg=notTheSame");
+			echo("password does not match");
 			exit();
 		}else {
 			// Check if user full name is character
 			if (!preg_match("/^[a-zA-Z ]*$/", $fullName)) {
 				// If the name contain some special characters redirect the user back to the previous page
-				header("location: index.php?mg=invalidName");
+				echo("Enter valid name");
 				exit();
 
 			}else {
 				// Check if email is valid
 				if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 					// If email seems to be invalid redirect the user back to the homepage
-					header("location: index.php?mg=invalidMail");
+					echo("invalid mail id");
 					exit();
 				}else {
 					// Check if there is user exist with thesame email in the database using prepare statement
@@ -64,7 +64,7 @@ if (isset($_POST['signup'])) {
 					// Check if the request is ready
 					if (!mysqli_stmt_prepare($checkStmt, $check)) {
 						// If it is not ready redirect the user back to previous page
-						header("location: index.php?mg=sqlError");
+						echo("sqlError");
 						exit();
 					}else {
 						mysqli_stmt_bind_param($checkStmt, "s", $email);
@@ -74,7 +74,7 @@ if (isset($_POST['signup'])) {
 						// Check if there is any rows with the email
 						if ($resultCheck > 0) {
 							// if found redirect user back
-							header("location: index.php?mg=dublicateEmail");
+							echo("account already exist! Please login");
 							exit();
 						}else{
 						
@@ -145,7 +145,7 @@ if (isset($_POST['signup'])) {
 							// Check if the request is ready to be use
 							if (!mysqli_stmt_prepare($stmt, $sql)) {
 								// If not ready display error and redirect user to previous page
-								header("location: index.php?mg=sqlError");
+								echo("sqlError 2");
 								exit();
 							}else {
 
@@ -154,7 +154,7 @@ if (isset($_POST['signup'])) {
 // 								echo $email;
 // 								echo $hashedPassword;
 // 								echo $currentDate;
-// 								echo $cuurrentTime;
+// 								echo $currentTime;
 // 								echo $dob;
 // 								echo $father_name;
 // 								echo $mother_name;
@@ -184,12 +184,12 @@ if (isset($_POST['signup'])) {
 								if ($result === TRUE) {
 									
 									// If the query run successfully redirect the user to login page and display success message
-									header("location: index.php?mg=signupSuccess");
+									echo("Signup sucessfully");
 									exit();
 								}else {
 									
 									// If something goes wrong and it fails to run the query redirect the user to previous page and display error message
-									header("location: index.php?mg=error");
+									echo("error");
 									
 									exit();
 								}

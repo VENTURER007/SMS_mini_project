@@ -75,7 +75,7 @@ if ($conn1->connect_error) {
      }else {
          
          // If something goes wrong and it fails to run the query redirect the user to previous page and display error message
-         echo("subject not added!");
+         echo("subject and exam not added!");
          
          exit();
      }

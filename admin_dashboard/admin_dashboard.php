@@ -30,6 +30,47 @@
   <ul class="categories list-unstyled">
   <script type="text/javascript">
 
+  function srUpdate() {
+
+const data = new FormData();
+const xhr = new XMLHttpRequest();
+let update = document.getElementById("button").value;
+let name = document.getElementById("name").value;
+let email = document.getElementById("email").value;
+let dob = document.getElementById("dob").value;
+let father = document.getElementById("father").value;
+let mother = document.getElementById("mother").value;
+let blood = document.getElementById("blood").value;
+let mobile = document.getElementById("mobile").value;
+let address = document.getElementById("address").value;
+var gender = document.querySelector('input[name="g"]:checked').value;
+let yoa = document.getElementById("yoa").value;
+let branch = document.getElementById("branch1").value;
+let semester = document.getElementById("semester1").value;
+
+  xhr.onload=function(){
+
+    document.getElementById("form").innerHTML = xhr.responseText;
+
+  }
+  data.append("update",update)
+  data.append("name",name);
+  data.append("email" , email);
+  data.append("dob" , dob);
+  data.append("father" , father);
+  data.append("mother" , mother);
+  data.append("blood" , blood);
+  data.append("mobile", mobile);
+  data.append("address", address);
+  data.append("gender", gender);
+  data.append("yoa" , yoa);
+  data.append("branch1" , branch);
+  data.append("semester1" , semester);
+
+  xhr.open("POST" , "update_insert.php" , true);
+  xhr.send(data);
+
+			}
 
 
       function dashboard(){
@@ -170,15 +211,15 @@ document.getElementById("ce_mark_div").style.display="none";
           document.getElementById("table_div").style.display="none";  
                
     
-    document.getElementById("update_div").style.display="none";
+    document.getElementById("update_div").style.display="block";
     document.getElementById("branch_div").style.display="none";  
     document.getElementById("semester_div").style.display="none";
     document.getElementById("result_branch_div").style.display="none";  
     document.getElementById("ce_mark_branch_div").style.display="none";
     document.getElementById("result_semester_div").style.display="none"; 
     document.getElementById("ce_mark_semester_div").style.display="none";
-document.getElementById("results_div").style.display="none";
-document.getElementById("ce_mark_div").style.display="none";
+    document.getElementById("results_div").style.display="none";
+    document.getElementById("ce_mark_div").style.display="none";
           document.getElementById("update_div").innerHTML = xhr.responseText;
         }
         
@@ -382,6 +423,7 @@ function enter_ce_mark(event,n){
      
     var a = input[i];
      let k =  a.value;
+     console.log(k);
     marks.push(k);
     
 }
@@ -390,6 +432,7 @@ for (var i = 0; i < classes.length; i++) {
      
      var a = classes[i];
       let k =  a.dataset.value;
+      console.log(k);
      id.push(k);
      
  }

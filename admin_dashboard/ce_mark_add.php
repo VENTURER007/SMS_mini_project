@@ -84,5 +84,7 @@ if(isset($marks)&&isset($_SESSION['subject_id'])&&isset($ids)&&(sizeof($marks)==
                         }
                                     
 
+                    }else{
+                        echo "something went wrong";
                     }
 ?>

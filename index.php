@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html id="html" lang="en" >
 <head>
   <meta charset="UTF-8">
   <title>Student Record Mangement System</title>
@@ -74,7 +74,7 @@ var gender = document.querySelector('input[name="g"]:checked').value;
 
   xhr.onload=function(){
 
-document.getElementById("body").innerHTML = xhr.responseText;
+document.getElementById("response").innerHTML = xhr.responseText;
 
 }
 
@@ -91,7 +91,8 @@ document.getElementById("body").innerHTML = xhr.responseText;
           <div  class="form"  id="a-form"  enctype="multipart/form-data">
 
           <h2 class="form_title title">Create Account</h2>
-          <?php include 'respond.php'; ?>
+          <?php include "respond.php"; ?>
+         <div id="response"  class='success-respond'></div>
           
          
           <input type="text" class="form__input" name="name" id="name" placeholder="Full Name *" required="required" title="Insert Your Full Name Here">

@@ -85,6 +85,9 @@ if (!isset($_POST['login'])) {
 							$yoa			= $row['year_of_admission'];
 							$course			= $row['course_name'];
 							$semester		= $row['current_semester'];
+							$mobile			= $row['mobile_no'];
+							$address 		= $row['address'];
+							$gender         = $row['gender'];
 							
 						}
 
@@ -121,7 +124,12 @@ if (!isset($_POST['login'])) {
 							$_SESSION['blood'] 		= $blood; 
 							$_SESSION['yoa'] 		= $yoa; 
 							$_SESSION['course'] 	= $course; 
-							$_SESSION['semester'] 	= $semester;  
+							$_SESSION['semester'] 	= $semester;
+							$_SESSION['mobile'] 	= $mobile;
+							$_SESSION['address'] 	= $address;
+							$_SESSION['gender'] 	= $gender;
+							
+
 							// You can more based on your project 
 							
 							// Redirect to home page 
