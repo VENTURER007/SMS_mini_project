@@ -5,8 +5,22 @@
   <meta charset="UTF-8">
   <title>Admin Page</title>
   <!-- CSS only -->
+  <link href="/hover.css" rel="stylesheet" media="all">
+  <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <!-- Google Fonts Roboto -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+    />
+    <!-- MDB -->
+    <link rel="stylesheet" href="css/mdb.min.css" />
+    <script type="text/javascript" src="js/mdb.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 <link rel='stylesheet' href='https://unicons.iconscout.com/release/v3.0.6/css/line.css'><link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"/>
 <script src="https://code.jquery.com/jquery-latest.min.js"/>
 <script></script>
@@ -418,13 +432,13 @@ function enter_ce_mark(event,n){
   var classes = document.getElementsByClassName("ce_mark_input");
   
   var input = document.getElementsByName('array[]');
- var marks=[];
+ var ce_marks=[];
  for (var i = 0; i < input.length; i++) {
      
     var a = input[i];
      let k =  a.value;
      console.log(k);
-    marks.push(k);
+    ce_marks.push(k);
     
 }
 var id=[];
@@ -456,7 +470,7 @@ document.getElementById("table_div").style.display="none";
 }
 
 var json={
-"marks": marks,
+"ce_marks": ce_marks,
 "id":id
 };
 //  var json[markss] = JSON.stringify(marks);
@@ -529,7 +543,7 @@ function enter_result(event,n){
   const xhr = new XMLHttpRequest();
   var classes = document.getElementsByClassName("exam_mark_input");
   
-  var input = document.getElementsByName('array[]');
+  var input = document.getElementsByName('result_array[]');
  var marks=[];
  for (var i = 0; i < input.length; i++) {
      
@@ -594,26 +608,26 @@ json_string=JSON.stringify(json);
       
       </script>
     <li >
-      <i class="uil-estate fa-fw"></i><a style="color: var(--dk-gray-400);"   onclick="dashboard();"> Dashboard</a>
-      
+      <buttonn class=" hvr-radial-out hvr-grow-shadow"   onclick="dashboard();"><i class="uil-estate hvr-icon-pulse-grow"></i> Dashboard      </buttonn>
+      </li>
      
   
-    <li class="">
-      <i class="uil-book-alt"></i><a style="color: var(--dk-gray-400);"   onclick="records();" id="academic_details">Student Records</a>
+    <li >
+      <buttonn  class="hvr-radial-out hvr-grow-shadow"  onclick="records();" id="academic_details"><i class="uil-book-alt hvr-icon-pulse-grow"></i>Student Records</buttonn>
       <ul class="sidebar-dropdown list-unstyled">
-       
+       </li>
       </ul>
     </li>
     <li class="">
-      <i class="uil-layers"></i><a href="#"  onclick="ce_marks();" id="ce_marks">Publish CE marks</a>
+      <buttonn href="#"   class="hvr-radial-out hvr-grow-shadow" onclick="ce_marks();" id="ce_marks"><i class="uil-layers hvr-icon-pulse-grow"></i>Publish CE marks</buttonn>
       <ul class="sidebar-dropdown list-unstyled">
-       
+       </li>
       </ul>
     </li>
     <li class="">
-      <i class="uil-layer-group"></i><a href="#" onclick="results();" id="results"> Publish Results</a>
+      <buttonn href="#" class="hvr-radial-out hvr-grow-shadow" onclick="results();" id="results"><i class="uil-layer-group hvr-icon-pulse-grow"></i> Publish Results</buttonn>
       <ul class="sidebar-dropdown list-unstyled">
-        
+       </li> 
       </ul>
     </li>
     
@@ -624,15 +638,15 @@ json_string=JSON.stringify(json);
   <nav class="navbar navbar-expand-md">
     <div class="container-fluid">
       <div class="navbar-header">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#toggle-navbar" aria-controls="toggle-navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <buttonn class="navbar-toggler" type="buttonn" data-bs-toggle="collapse" data-bs-target="#toggle-navbar" aria-controls="toggle-navbar" aria-expanded="false" aria-label="Toggle navigation">
           <i class="uil-bars text-white"></i>
-        </button>
+        </buttonn>
         <a class="navbar-brand"  class="text-arran" href="#">Student Record Management<span class="main-color"> System</span></a>
       </div>
       <div class="collapse navbar-collapse" id="toggle-navbar">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item dropdown">
-            <!-- <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <!-- <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="buttonn" data-bs-toggle="dropdown" aria-expanded="false">
               Settings -->
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -654,6 +668,7 @@ json_string=JSON.stringify(json);
             
             
           </li>
+          
           <li class="nav-item">
             <a class="nav-link" href="#">
               <i data-show="show-side-navigation1" style="
@@ -679,17 +694,17 @@ json_string=JSON.stringify(json);
   </div>
 <div class="input__div" id='branch_div'>
     
-            <label class="label_input" name="cs" id="CS" onclick="get_branch_id(this.id);">BTECH-CS</label>
+            <button class=" container hvr-float-shadow" name="cs" id="CS" onclick="get_branch_id(this.id);">BTECH-CS</button>
             <br>
-            <label class="label_input" name="it" id="IT" onclick="get_branch_id(this.id);">BTECH-IT</label>
+            <button class=" container hvr-float-shadow" name="it" id="IT" onclick="get_branch_id(this.id);">BTECH-IT</button>
             <br>
-            <label class="label_input" name="me" id="ME" onclick="get_branch_id(this.id);">BTECH-ME</label>
+            <button class=" container hvr-float-shadow" name="me" id="ME" onclick="get_branch_id(this.id);">BTECH-ME</button>
             <br>
-            <label class="label_input" name="eee" id="EEE" onclick="get_branch_id(this.id);">BTECH-EEE</label>
+            <button class=" container hvr-float-shadow" name="eee" id="EEE" onclick="get_branch_id(this.id);">BTECH-EEE</button>
             <br>
-            <label class="label_input" name="ec" id="EC" onclick="get_branch_id(this.id);">BTECH-EC</label>
+            <button class=" container hvr-float-shadow" name="ec" id="EC" onclick="get_branch_id(this.id);">BTECH-EC</button>
             <br>
-            <label class="label_input" name="ce" id="CE" onclick="get_branch_id(this.id);">BTECH-CE</label>
+            <button class=" container hvr-float-shadow" name="ce" id="CE" onclick="get_branch_id(this.id);">BTECH-CE</button>
             
             
             
@@ -698,17 +713,17 @@ json_string=JSON.stringify(json);
 
 <div class="input__div" id="ce_mark_branch_div">
     
-            <label class="label_input" name="cs" id="CS" onclick="ce_marks_branch(this.id);">BTECH-CS</label>
+            <button class=" container hvr-float-shadow" name="cs" id="CS" onclick="ce_marks_branch(this.id);">BTECH-CS</button>
             <br>
-            <label class="label_input" name="it" id="IT" onclick="ce_marks_branch(this.id);">BTECH-IT</label>
+            <button class=" container hvr-float-shadow" name="it" id="IT" onclick="ce_marks_branch(this.id);">BTECH-IT</button>
             <br>
-            <label class="label_input" name="me" id="ME" onclick="ce_marks_branch(this.id);">BTECH-ME</label>
+            <button class="container hvr-float-shadow" name="me" id="ME" onclick="ce_marks_branch(this.id);">BTECH-ME</button>
             <br>
-            <label class="label_input" name="eee" id="EEE" onclick="ce_marks_branch(this.id);">BTECH-EEE</label>
+            <button class=" container hvr-float-shadow" name="eee" id="EEE" onclick="ce_marks_branch(this.id);">BTECH-EEE</button>
             <br>
-            <label class="label_input" name="ec" id="EC" onclick="ce_marks_branch(this.id);">BTECH-EC</label>
+            <button class=" container hvr-float-shadow" name="ec" id="EC" onclick="ce_marks_branch(this.id);">BTECH-EC</button>
             <br>
-            <label class="label_input" name="ce" id="CE" onclick="ce_marks_branch(this.id);">BTECH-CE</label>
+            <button class=" container hvr-float-shadow" name="ce" id="CE" onclick="ce_marks_branch(this.id);">BTECH-CE</button>
             
             
             
@@ -716,17 +731,17 @@ json_string=JSON.stringify(json);
 
 <div class="input__div" id="result_branch_div">
     
-            <label class="label_input" name="cs" id="CS" onclick="results_branch(this.id);">BTECH-CS</label>
+            <button class=" container hvr-float-shadow" name="cs" id="CS" onclick="results_branch(this.id);">BTECH-CS</button>
             <br>
-            <label class="label_input" name="it" id="IT" onclick="results_branch(this.id);">BTECH-IT</label>
+            <button class=" container hvr-float-shadow" name="it" id="IT" onclick="results_branch(this.id);">BTECH-IT</button>
             <br>
-            <label class="label_input" name="me" id="ME" onclick="results_branch(this.id);">BTECH-ME</label>
+            <button class=" container hvr-float-shadow" name="me" id="ME" onclick="results_branch(this.id);">BTECH-ME</button>
             <br>
-            <label class="label_input" name="eee" id="EEE" onclick="results_branch(this.id);">BTECH-EEE</label>
+            <button class=" container hvr-float-shadow" name="eee" id="EEE" onclick="results_branch(this.id);">BTECH-EEE</button>
             <br>
-            <label class="label_input" name="ec" id="EC" onclick="results_branch(this.id);">BTECH-EC</label>
+            <button class=" container hvr-float-shadow" name="ec" id="EC" onclick="results_branch(this.id);">BTECH-EC</button>
             <br>
-            <label class="label_input" name="ce" id="CE" onclick="results_branch(this.id);">BTECH-CE</label>
+            <button class=" container hvr-float-shadow" name="ce" id="CE" onclick="results_branch(this.id);">BTECH-CE</button>
             
             
             
@@ -734,21 +749,21 @@ json_string=JSON.stringify(json);
 
 <div class="input__div" id='semester_div'>
 
-<label class="label_input" onclick="get_semester_id(this.id);" id="1" name="">semester 1</label>
+<button class=" container hvr-float-shadow" onclick="get_semester_id(this.id);" id="1" name="">semester 1</button>
 <br>
-<label class="label_input" onclick="get_semester_id(this.id);" id="2" name="">semester 2</label>
+<button class=" container hvr-float-shadow" onclick="get_semester_id(this.id);" id="2" name="">semester 2</button>
 <br>
-<label class="label_input" onclick="get_semester_id(this.id);" id="3" name="">semester 3</label>
+<button class=" container hvr-float-shadow" onclick="get_semester_id(this.id);" id="3" name="">semester 3</button>
 <br>
-<label class="label_input" onclick="get_semester_id(this.id);" id="4" name="">semester 4</label>
+<button class=" container hvr-float-shadow" onclick="get_semester_id(this.id);" id="4" name="">semester 4</button>
 <br>
-<label class="label_input" onclick="get_semester_id(this.id);" id="5" name="">semester 5</label>
+<button class=" container hvr-float-shadow" onclick="get_semester_id(this.id);" id="5" name="">semester 5</button>
 <br>
-<label class="label_input" onclick="get_semester_id(this.id);" id="6" name="">semester 6</label>
+<button class=" container hvr-float-shadow" onclick="get_semester_id(this.id);" id="6" name="">semester 6</button>
 <br>
-<label class="label_input" onclick="get_semester_id(this.id);" id="7" name="">semester 7</label>
+<button class=" container hvr-float-shadow" onclick="get_semester_id(this.id);" id="7" name="">semester 7</button>
 <br>
-<label class="label_input" onclick="get_semester_id(this.id);" id="8" name="">semester 8</label>
+<button class=" container hvr-float-shadow" onclick="get_semester_id(this.id);" id="8" name="">semester 8</button>
 
 
 </div> 
@@ -756,54 +771,54 @@ json_string=JSON.stringify(json);
 
 <div class="input__div" id='ce_mark_semester_div'>
 
-<label class="label_input" onclick="ce_marks_semester(this.id);" id="1" name="">semester 1</label>
+<button class=" container hvr-float-shadow" onclick="ce_marks_semester(this.id);" id="1" name="">semester 1</button>
 <br>
-<label class="label_input" onclick="ce_marks_semester(this.id);" id="2" name="">semester 2</label>
+<button class=" container hvr-float-shadow" onclick="ce_marks_semester(this.id);" id="2" name="">semester 2</button>
 <br>
-<label class="label_input" onclick="ce_marks_semester(this.id);" id="3" name="">semester 3</label>
+<button class=" container hvr-float-shadow" onclick="ce_marks_semester(this.id);" id="3" name="">semester 3</button>
 <br>
-<label class="label_input" onclick="ce_marks_semester(this.id);" id="4" name="">semester 4</label>
+<button class=" container hvr-float-shadow" onclick="ce_marks_semester(this.id);" id="4" name="">semester 4</button>
 <br>
-<label class="label_input" onclick="ce_marks_semester(this.id);" id="5" name="">semester 5</label>
+<button class=" container hvr-float-shadow" onclick="ce_marks_semester(this.id);" id="5" name="">semester 5</button>
 <br>
-<label class="label_input" onclick="ce_marks_semester(this.id);" id="6" name="">semester 6</label>
+<button class=" container hvr-float-shadow" onclick="ce_marks_semester(this.id);" id="6" name="">semester 6</button>
 <br>
-<label class="label_input" onclick="ce_marks_semester(this.id);" id="7" name="">semester 7</label>
+<button class=" container hvr-float-shadow" onclick="ce_marks_semester(this.id);" id="7" name="">semester 7</button>
 <br>
-<label class="label_input" onclick="ce_marks_semester(this.id);" id="8" name="">semester 8</label>
+<button class=" container hvr-float-shadow" onclick="ce_marks_semester(this.id);" id="8" name="">semester 8</button>
 
 
 </div> 
 
 <div class="input__div" id='result_semester_div'>
 
-<label class="label_input" onclick="results_semester(this.id);" id="1" name="">semester 1</label>
+<button class=" container hvr-float-shadow" onclick="results_semester(this.id);" id="1" name="">semester 1</button>
 <br>
-<label class="label_input" onclick="results_semester(this.id);" id="2" name="">semester 2</label>
+<button class=" container hvr-float-shadow" onclick="results_semester(this.id);" id="2" name="">semester 2</button>
 <br>
-<label class="label_input" onclick="results_semester(this.id);" id="3" name="">semester 3</label>
+<button class=" container hvr-float-shadow" onclick="results_semester(this.id);" id="3" name="">semester 3</button>
 <br>
-<label class="label_input" onclick="results_semester(this.id);" id="4" name="">semester 4</label>
+<button class=" container hvr-float-shadow" onclick="results_semester(this.id);" id="4" name="">semester 4</button>
 <br>
-<label class="label_input" onclick="results_semester(this.id);" id="5" name="">semester 5</label>
+<button class=" container hvr-float-shadow" onclick="results_semester(this.id);" id="5" name="">semester 5</button>
 <br>
-<label class="label_input" onclick="results_semester(this.id);" id="6" name="">semester 6</label>
+<button class=" container hvr-float-shadow" onclick="results_semester(this.id);" id="6" name="">semester 6</button>
 <br>
-<label class="label_input" onclick="results_semester(this.id);" id="7" name="">semester 7</label>
+<button class=" container hvr-float-shadow" onclick="results_semester(this.id);" id="7" name="">semester 7</button>
 <br>
-<label class="label_input" onclick="results_semester(this.id);" id="8" name="">semester 8</label>
+<button class=" container hvr-float-shadow" onclick="results_semester(this.id);" id="8" name="">semester 8</button>
 
 
 </div> 
-<div id ="table_div" class="table-wrapper">
+<div id ="table_div" class="container table-wrapper">
 
 
 
 
 </div>
 
-<div class="table-wrapper" id="ce_mark_div"></div>
-<div class="table-wrapper" id="results_div"></div>
+<div class="container table-wrapper" id="ce_mark_div"></div>
+<div class="container table-wrapper" id="results_div"></div>
 
 <div id="update_div">
 

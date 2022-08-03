@@ -4,20 +4,28 @@ include "/home/venturer/SMS_mini_project/db.php";
 
 $request = file_get_contents("php://input");
 
-
+unset($marks);
+unset($ids);
 
 $marks=json_decode($request)->marks;
 $ids=json_decode($request)->id;
 
 
 // foreach($marks as $mark){
-//  echo $mark;
+//  echo "marks\n".$mark;
 //     }
 
-// foreach($ids as $id){
-//         echo $id;
-//         echo $mark;
-//            }
+
+//     foreach($ids as $id){
+//         echo "id\n".$id;
+//            }    
+
+//   echo "\nsubject_id".$_SESSION['subject_id'];
+//   echo "\nexam_id".$_SESSION['exam_id'];  
+//   echo "\n".sizeof($marks);  
+//   echo "\n".sizeof($ids);   
+
+
 
  $n=sizeof($marks);
  
@@ -25,8 +33,10 @@ $subject_id = $_SESSION['subject_id'];
 $exam_id = $_SESSION['exam_id'];   
    
            
-if(isset($exam_id)&&isset($marks)&&isset($_SESSION['subject_id'])&&isset($ids)&&(sizeof($marks)==sizeof($ids))){
+if(isset($exam_id)&&isset($marks)&&isset($_SESSION['subject_id'])&&isset($_SESSION['exam_id'])&&isset($ids)&&(sizeof($marks)==sizeof($ids))){
 
+
+        
            for($i=0; $i<$n; $i++ ){
            // Creating the template for inserting details
 
@@ -88,7 +98,9 @@ if(isset($exam_id)&&isset($marks)&&isset($_SESSION['subject_id'])&&isset($ids)&&
                     </div>
                 ";
                 
-                          $result=null;  
+                          $result=null;
+                          unset($marks);
+                          unset($ids);  
                             
                         }else {
                             
@@ -102,5 +114,7 @@ if(isset($exam_id)&&isset($marks)&&isset($_SESSION['subject_id'])&&isset($ids)&&
 
                     }else{
                         echo "something went wrong!";
+                        unset($marks);
+                            unset($ids);
                     }
 ?>

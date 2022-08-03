@@ -44,6 +44,7 @@ $gender=$_SESSION['gender'];
   <meta charset="UTF-8">
   <title>Student Page</title>
   <!-- CSS only -->
+  <link href="/hover.css" rel="stylesheet" media="all">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 <link rel='stylesheet' href='https://unicons.iconscout.com/release/v3.0.6/css/line.css'><link rel="stylesheet" href="./style.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"/>
@@ -64,12 +65,9 @@ $gender=$_SESSION['gender'];
     </div>
   </div>
 
-  <div class="search position-relative text-center px-4 py-3 mt-2">
-    <input type="text" class="form-control w-100 border-0 bg-transparent" placeholder="Search here">
-    <i class="fa fa-search position-absolute d-block fs-6"></i>
-  </div>
+  
 
-  <ul class="categories list-unstyled">
+  <ul class="container list-unstyled">
   <script>
       function dashboard(){
 
@@ -78,6 +76,7 @@ $gender=$_SESSION['gender'];
         document.getElementById("ce_mark_div").style.display="none";
         document.getElementById("welcome_message").style.display="block";
         document.getElementById("result_div").style.display="none";
+        document.getElementById("documents_div").style.display="none";
 
 
       }
@@ -88,7 +87,8 @@ $gender=$_SESSION['gender'];
       document.getElementById("academic_details_div").style.display="none";
       document.getElementById("ce_mark_div").style.display="none";
       document.getElementById("welcome_message").style.display="none";
-        document.getElementById("result_div").style.display="none"
+        document.getElementById("result_div").style.display="none";
+        document.getElementById("documents_div").style.display="none";
       
       }
       
@@ -98,21 +98,23 @@ $gender=$_SESSION['gender'];
         document.getElementById("academic_details_div").style.display="block";
         document.getElementById("ce_mark_div").style.display="none";
         document.getElementById("welcome_message").style.display="none";
-        document.getElementById("result_div").style.display="none"
+        document.getElementById("result_div").style.display="none";
+        document.getElementById("documents_div").style.display="none";
 
 
       }
 
       function ce_mark(id){
-        document.getElementById("personal_details_div").style.display="none";
+      document.getElementById("personal_details_div").style.display="none";
       document.getElementById("academic_details_div").style.display="none";
       
       document.getElementById("welcome_message").style.display="none";
-        document.getElementById("result_div").style.display="none"
+      document.getElementById("result_div").style.display="none";
+      document.getElementById("documents_div").style.display="none";
       
 
-const data = new FormData();
-const xhr = new XMLHttpRequest();
+  const data = new FormData();
+  const xhr = new XMLHttpRequest();
 
   xhr.onload=function(){
     document.getElementById("ce_mark_div").style.display="block";
@@ -132,11 +134,13 @@ const xhr = new XMLHttpRequest();
       
       
       function results(id){
-        document.getElementById("personal_details_div").style.display="none";
+      
+      document.getElementById("personal_details_div").style.display="none";
       document.getElementById("academic_details_div").style.display="none";
       document.getElementById("ce_mark_div").style.display="none";
       document.getElementById("result_div").style.display="block";
       document.getElementById("welcome_message").style.display="none";
+      document.getElementById("documents_div").style.display="none";
        
       
 
@@ -147,7 +151,7 @@ const xhr = new XMLHttpRequest();
 
     document.getElementById("result_div").innerHTML = xhr.responseText;
 
-  }
+    }
 
 
   data.append("id" , id);
@@ -223,33 +227,93 @@ let semester = document.getElementById("semester").value;
   xhr.send(data);
 
 }
+
+function doc_update(id){
+  const data = new FormData();
+const xhr = new XMLHttpRequest();
+document.getElementById("personal_details_div").style.display="none";
+      document.getElementById("academic_details_div").style.display="none";
+      document.getElementById("ce_mark_div").style.display="none";
+      document.getElementById("result_div").style.display="none";
+      document.getElementById("welcome_message").style.display="none";
+      document.getElementById("documents_div").style.display="block";
+
+xhr.onload=function(){
+
+                      
+  document.getElementById("documents_div").innerHTML = xhr.responseText;
+
+
+
+
+}
+
+data.append("id" , id);
+xhr.open("POST" , "doc_update.php" , true);
+xhr.send(data);
+
+
+}
+
+function doc_update_upload() {
+
+  var img = document.getElementById("img1").files;
+var plustwo_cert = document.getElementById("doc1").files;
+let update = document.getElementById("update_button").value;
+const data = new FormData();
+const xhr = new XMLHttpRequest();
+
+xhr.onload=function(){
+  
+  window.alert(xhr.responseText);
+  
+
+
+
+
+}
+data.append("update" , update);
+data.append("img" , img[0]);
+data.append("plustwo_cert" ,plustwo_cert[0]);
+xhr.open("POST" , "doc_update2.php" , true);
+xhr.send(data);
+
+
+}
+
       
       </script>
     <li >
-      <a class="button" onclick="dashboard();"><i class="uil-estate fa-fw"></i> Dashboard</a>
+      <button class="hvr-radial-out hvr-grow-shadow" onclick="dashboard();"><i class=" hvr-icon-pulse-grow uil-estate fa-fw"></i> Dashboard</button>
       
      
     <li >
-      <a class="button" onclick="personal_details();" id="personal_details"><i class="uil-user"></i> Personal Details</a>
+      <button class="hvr-radial-out hvr-grow-shadow" onclick="personal_details();" id="personal_details"><i class="hvr-icon-pulse-grow uil-user"></i> Personal Details</button>
      
       <ul class="sidebar-dropdown list-unstyled">
        
       </ul>
     </li>
     <li class="">
-      <a class="button" onclick="academic_details();" id="academic_details"><i class="uil-book-alt"></i>Academic Details</a>
+      <button class="hvr-radial-out hvr-grow-shadow" onclick="academic_details();" id="academic_details"><i class="hvr-icon-pulse-grow uil-book-alt"></i>Academic Details</button>
       <ul class="sidebar-dropdown list-unstyled">
        
       </ul>
     </li>
     <li class="">
-      <a class="button" onclick="ce_mark(<?php echo $user_id; ?>);" href="#"><i class="uil-layers"></i>CE marks</a>
+      <button class="hvr-radial-out hvr-grow-shadow" onclick="ce_mark(<?php echo $user_id; ?>);" href="#"><i class="hvr-icon-pulse-grow uil-layers"></i>CE marks</button>
       <ul class="sidebar-dropdown list-unstyled">
        
       </ul>
     </li>
     <li class="">
-      <a class="button" onclick="results(<?php echo $user_id; ?>);" href="#"><i class="uil-layer-group"></i>Results</a>
+      <button class="hvr-radial-out hvr-grow-shadow" onclick="results(<?php echo $user_id; ?>);" href="#"><i class="hvr-icon-pulse-grow uil-layer-group"></i>Results</button>
+      <ul class="sidebar-dropdown list-unstyled">
+        
+      </ul>
+    </li>
+    <li class="">
+      <button class="hvr-radial-out hvr-grow-shadow" onclick="doc_update(<?php echo $user_id; ?>);" href="#"><i class="hvr-icon-pulse-grow uil uil-book"></i>Documents</button>
       <ul class="sidebar-dropdown list-unstyled">
         
       </ul>
@@ -306,18 +370,18 @@ let semester = document.getElementById("semester").value;
     <div class="welcome">
       <div id="welcome_message" class="content rounded-3 p-3">
         <h1 style="color: var(--bs-blue);" class="fs-3">Welcome to Dashboard</h1>
-        <p style="color: var(--bs-blue);" class="mb-0">Hello <?php echo $name; ?>, welcome to your awesome dashboard!</p>
+        <p style="color: var(--bs-blue);" class="mb-0">Hello <?php echo $name; ?>, welcome to your dashboard!</p>
       </div>
     </div>
   </div>
 <div class="input__div" id='personal_details_div'>
-            <label for="name" class="input__label">Name</label><input type="text" class="form__input" id="name" placeholder="Full Name *" value = "<?php echo $_SESSION['loginName'];?>" ><br>
-            <label for="email" class="input__label"> Email</label><input id="email"type="text" class="form__input" value = "<?php echo $_SESSION['loginEmail'];?>"><br>
-            <label for="dob" class="input__label"> Date of birth</label><input id="dob"type="text" class="form__input" value = "<?php echo $_SESSION['dob'];?>"><br>
-            <label for="father" class="input__label">Father name</label><input id="father"type="text" class="form__input" value = "<?php echo $_SESSION['father'];?>"><br>
-            <label for="mother" class="input__label">Mother name</label><input id="mother"type="text" class="form__input" value = "<?php echo $_SESSION['mother'];?>"><br>
-            <label for="blood" class="input__label"> Blood Group</label><input id="blood"type="text" class="form__input" value = "<?php echo $_SESSION['blood'];?>"><br>
-            <label for="mobile" class="input__label"> Mobile number</label><input id="mobile"type="text" class="form__input" value = "<?php echo $_SESSION['mobile'];?>"><br>
+            <label for="name" class="input__label">Name</label><input type="text" class="form__input form-control" id="name" placeholder="Full Name *" value = "<?php echo $_SESSION['loginName'];?>" ><br>
+            <label for="email" class="input__label"> Email</label><input id="email"type="text" class="form__input form-control" value = "<?php echo $_SESSION['loginEmail'];?>"><br>
+            <label for="dob" class="input__label"> Date of birth</label><input id="dob"type="text" class="form__input form-control" value = "<?php echo $_SESSION['dob'];?>"><br>
+            <label for="father" class="input__label">Father name</label><input id="father"type="text" class="form__input form-control" value = "<?php echo $_SESSION['father'];?>"><br>
+            <label for="mother" class="input__label">Mother name</label><input id="mother"type="text" class="form__input form-control" value = "<?php echo $_SESSION['mother'];?>"><br>
+            <label for="blood" class="input__label"> Blood Group</label><input id="blood"type="text" class="form__input form-control" value = "<?php echo $_SESSION['blood'];?>"><br>
+            <label for="mobile" class="input__label"> Mobile number</label><input id="mobile"type="text" class="form__input form-control" value = "<?php echo $_SESSION['mobile'];?>"><br>
             <div class="input_field radio_option">
             <label for="gender" class="input__label">Gender</label> <br> 
             <input type="Radio" name='g' value="male" id="rd1" <?php if($_SESSION['gender']=="male"){ echo "checked";} ?>>
@@ -326,17 +390,17 @@ let semester = document.getElementById("semester").value;
               <label for="rd2">Female</label>
               </div><br>
             <label for="address" class="input__label">Address</label><input id="address"type="textarea" style="
-	height: 150px;" class="form__input" value = "<?php echo $_SESSION['address'];?>"><br>
-            <button id="personal_button" value="update" onclick="personal_update();">update</button>
+	height: 150px;" class="form__input form-control" value = "<?php echo $_SESSION['address'];?>"><br>
+            <button id="personal_button" class="hvr-radial-out" value="update" onclick="personal_update();">update</button>
 </div>
 
 <div class="input__div" id='academic_details_div'>
 
 
-<label for="email" class="input__label">Year of Admission</label><input id="yoa"  type="text" class="form__input" value = "<?php echo $_SESSION['yoa'];?>"><br>
-<label for="dob" class="input__label">Course</label><input id="branch" type="text" class="form__input" value = "<?php echo $_SESSION['course'];?>"><br>
-<label for="blood" class="input__label">Semester</label><input id="semester"  type="text" class="form__input" value = "<?php echo $_SESSION['semester'];?>"><br>
-<button id="academic_button"  onclick="academic_update();">update</button>
+<label for="email" class="input__label">Year of Admission</label><input id="yoa"  type="text" class="form__input form-control" value = "<?php echo $_SESSION['yoa'];?>"><br>
+<label for="dob" class="input__label">Course</label><input id="branch" type="text" class="form__input form-control" value = "<?php echo $_SESSION['course'];?>"><br>
+<label for="blood" class="input__label">Semester</label><input id="semester"  type="text" class="form__input form-control" value = "<?php echo $_SESSION['semester'];?>"><br>
+<button class="hvr-radial-out" id="academic_button"  onclick="academic_update();">update</button>
 </div> 
 
 
@@ -344,9 +408,8 @@ let semester = document.getElementById("semester").value;
     margin-left: 21px;" id='ce_mark_div'>
 
   </div>
-
-    <div style="color: var(--dk-gray-400);
-    margin-left: 21px;" id='result_div'></div>    
+<div id="documents_div"></div>
+<div style="color: var(--dk-gray-400);margin-left: 21px;" id='result_div'></div>    
    
 </section>
 <!-- partial -->

@@ -5,9 +5,24 @@ include "/home/venturer/SMS_mini_project/db.php";
 $request = file_get_contents("php://input");
 
 
-
-$marks=json_decode($request)->marks;
+unset($marks);
+unset($ids);
+$marks=json_decode($request)->ce_marks;
 $ids=json_decode($request)->id;
+
+// foreach($marks as $mark){
+//     echo "marks\n".$mark;
+//        }
+   
+   
+//        foreach($ids as $id){
+//            echo "id\n".$id;
+//               }    
+   
+//      echo "\nsubject_id".$_SESSION['subject_id'];
+//      echo "\nexam_id".$_SESSION['exam_id'];  
+//      echo "\n".sizeof($marks);  
+//      echo "\n".sizeof($ids);  
 
 
 // foreach($marks as $mark){
@@ -74,6 +89,9 @@ if(isset($marks)&&isset($_SESSION['subject_id'])&&isset($ids)&&(sizeof($marks)==
                 ";
 
                             $result=NULL;
+                            unset($marks);
+                            unset($ids);
+                            unset($request);
                             
                         }else {
                             
@@ -86,5 +104,8 @@ if(isset($marks)&&isset($_SESSION['subject_id'])&&isset($ids)&&(sizeof($marks)==
 
                     }else{
                         echo "something went wrong";
+                        unset($marks);
+                            unset($ids);
+                            unset($request);
                     }
 ?>

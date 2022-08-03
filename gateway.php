@@ -105,11 +105,10 @@ if (isset($_POST['signup'])) {
 
   						  if(in_array($fileType, $allowTypes) && in_array($fileType2, $allowTypes)){
     		    // Upload file to server
-	
+							
   						      if(move_uploaded_file($_FILES["img"]["tmp_name"], $targetFilePath) && move_uploaded_file($_FILES["plustwo_cert"]["tmp_name"], $targetFilePath2)){
 			
-
-
+								
             		// Insert image file name into database
   						        //   $insert = $conn->query("INSERT into users (image_name) VALUES ('$fileName')");
 			

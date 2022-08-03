@@ -103,7 +103,7 @@ document.getElementById("response").innerHTML = xhr.responseText;
 
 					<input type="text" class="form__input" name="mother_name" id="mother" placeholder="Mother Name *" required="required" title="Insert Your Mother Name Here">
 
-          <input type="date" class="colour_c" name="dob" id="dob" placeholder="Date of birth" required="required" title="Insert Year of Date of birth">
+          <input type="date"  class="colour_c" name="dob" id="dob" placeholder="Date of birth" required="required" title="Insert Year of Date of birth">
 
           <input type="text" class="form__input" name="blood" id="blood" placeholder="Blood Group *" required="required" title="Insert Your Blood group">
 

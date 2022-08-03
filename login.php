@@ -41,8 +41,8 @@ if (!isset($_POST['login'])) {
 				// Stop the script from running
 				exit();
 			}else {
-
-					$sql="SELECT * FROM users WHERE email=?;";
+					$date_register = '%d %M %Y';
+					$sql="SELECT id,name,email,password, DATE_FORMAT( dob , '%d %M %Y' ) AS 'dob' , father_name, mother_name, blood_group, year_of_admission,course_name,current_semester,image_name,mobile_no,address,gender,cert_name FROM users WHERE email=?;";
 					$stmt = mysqli_stmt_init($conn);
 					if (!mysqli_stmt_prepare($stmt, $sql)) {
 						header("location: index.php?mg=error");

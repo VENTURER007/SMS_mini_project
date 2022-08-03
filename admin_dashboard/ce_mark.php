@@ -25,11 +25,16 @@ include "/home/venturer/SMS_mini_project/db.php";
                 if($query->num_rows>0){
 
                     ?>
-               <div id='subject_div' style="padding-left: 24px;"> <label class='dashcolour1' >Subject name</label><input type='text' name='subject' class='subject_input' id="subject_input" placeholder='Subject name'>
-               <button class="button" id='subject_button' onclick="subject(event);" id="subject_button" >Add</button>  </div>
-                 <h1 style="color:#1963ec;font-size: calc(0.375rem + 1.5vw); margin: 12px;">ADD CE Marks </h1>
+               <div class="form-row" id='subject_div'><h1 class="container" style="margin-left: 13px;font-family: Arial, Helvetica, sans-serif;color: #1963ec;">ADD CE Marks </h1><input style="
+    margin-left: 22px;
+" type='text' name='subject' class=' subject_input form-control ' id="subject_input" placeholder='Subject name'>
+               <button style="
+    margin-top: 19px;
+    margin-left: 21px;
+" class=" hvr-radial-out button" id='subject_button' onclick="subject(event);" id="subject_button" >Add</button>  </div><br>
+                 
                 
-                 <table id="fl-table"  class="fl-table">
+                 <table id="fl-table"  class=" container fl-table">
                     <thead>
                     <tr>
                      <th>id</th>
@@ -54,7 +59,7 @@ include "/home/venturer/SMS_mini_project/db.php";
                     
                     echo "<td id='name"; echo $id++; ?><?php echo "'>";?><?php echo $row['name'];  ?><?php  echo "</td>";
 
-                    echo "<td id='ce_mark"; echo $id++; ?><?php echo "'>";?><?php echo "<input required='required' class='ce_mark_input' name='array[]' data-value='";?><?php echo $row['id']; ; ?><?php echo "' type='text' placeholder='enter marks'  >";  ?><?php  echo "</td>";
+                    echo "<td id='ce_mark"; echo $id++; ?><?php echo "'>";?><?php echo "<input required='required' class=' form-control ce_mark_input' name='array[]' data-value='";?><?php echo $row['id']; ; ?><?php echo "' type='text' placeholder='enter marks'  >";  ?><?php  echo "</td>";
                     
                     
                     
@@ -63,7 +68,7 @@ include "/home/venturer/SMS_mini_project/db.php";
 
                
                      endwhile;echo "</tbody>";
-                     echo "</table><button class='button' style='margin-left: 161px;'  onclick='enter_ce_mark(event);' id='ce_button";?><?php echo $id; ?><?php echo"' >Enter</button> ";
+                     echo "</table><br><button class=' hvr-radial-out button' style='margin-left: 161px;'  onclick='enter_ce_mark(event);' id='ce_button";?><?php echo $id; ?><?php echo"' >Enter</button> ";
                     }
 
         }
