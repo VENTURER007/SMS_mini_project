@@ -24,6 +24,10 @@ label{
   color:#807373;
 }
 
+p{
+  text-align: center;
+}
+
 /**/
 .main {
   position: relative;

@@ -82,6 +82,8 @@
                
                      endwhile;echo "</tbody>";
                      echo "</table>";
+                    }else{
+                       echo "<p class='container'>No records available!";
                     }
 
         }

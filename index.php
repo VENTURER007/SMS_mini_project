@@ -40,16 +40,12 @@ let signup = document.getElementById("signup_button").value;
 var img = document.getElementById("img").files;
 var plustwo_cert = document.getElementById("plustwo_cert").files;
 var gender = document.querySelector('input[name="g"]:checked').value;
-// if (document.getElementById('rd1').checked){
-//   let gender = document.getElementById('rd1').value;
-//   data.append("gender" , gender);
-// }else
-// if(document.getElementById('rd2').checked){
-//  let gender = document.getElementById('rd2').value;
-//  data.append("gender" , gender);
-// }else{
-// console.log("select a gender");
-// }
+
+//mobile number validation
+
+var phoneno = /^\d{10}$/;
+  if(mobile.match(phoneno))
+  {
   data.append("gender",gender);
   data.append("name" , name);
   data.append("email" , email);
@@ -71,6 +67,14 @@ var gender = document.querySelector('input[name="g"]:checked').value;
   
   xhr.open("POST" , "gateway.php" , true);
   xhr.send(data);
+  }
+  else
+  {
+     alert("Not a valid Phone Number");
+     return false;
+  }
+
+  
 
   xhr.onload=function(){
 

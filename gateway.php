@@ -36,26 +36,26 @@ if (isset($_POST['signup'])) {
 	// Check if either of the items are empty
 	if (empty($fullName) || empty($email) || empty($password) || empty($cPassword) || empty($father_name) || empty($mother_name) || empty($dob) || empty($blood) || empty($yoa) || empty($branch) || empty($semester) || empty($mobile) || empty($address) || empty($gender)) {
 		// If one found empty redirect user back to the signup page
-		echo("fill all the columns to signup");
+		echo("<p>fill all the columns to signup</p>");
 		exit();
 	}else {
 		// Check if both password are correct
 		if ($password !== $cPassword) {
 			// If not thesame redirect user back to the previous page
-			echo("password does not match");
+			echo("<p>password does not match</p>");
 			exit();
 		}else {
 			// Check if user full name is character
 			if (!preg_match("/^[a-zA-Z ]*$/", $fullName)) {
 				// If the name contain some special characters redirect the user back to the previous page
-				echo("Enter valid name");
+				echo("<p>Enter valid name");
 				exit();
 
 			}else {
 				// Check if email is valid
 				if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 					// If email seems to be invalid redirect the user back to the homepage
-					echo("invalid mail id");
+					echo("<p>invalid mail id</p>");
 					exit();
 				}else {
 					// Check if there is user exist with thesame email in the database using prepare statement
@@ -64,7 +64,7 @@ if (isset($_POST['signup'])) {
 					// Check if the request is ready
 					if (!mysqli_stmt_prepare($checkStmt, $check)) {
 						// If it is not ready redirect the user back to previous page
-						echo("sqlError");
+						echo("<p>sqlError</p>");
 						exit();
 					}else {
 						mysqli_stmt_bind_param($checkStmt, "s", $email);
@@ -74,7 +74,7 @@ if (isset($_POST['signup'])) {
 						// Check if there is any rows with the email
 						if ($resultCheck > 0) {
 							// if found redirect user back
-							echo("account already exist! Please login");
+							echo("<p>account already exist! Please login</p>");
 							exit();
 						}else{
 						
@@ -144,7 +144,7 @@ if (isset($_POST['signup'])) {
 							// Check if the request is ready to be use
 							if (!mysqli_stmt_prepare($stmt, $sql)) {
 								// If not ready display error and redirect user to previous page
-								echo("sqlError 2");
+								echo("sqlError 2</p>");
 								exit();
 							}else {
 
@@ -183,12 +183,12 @@ if (isset($_POST['signup'])) {
 								if ($result === TRUE) {
 									
 									// If the query run successfully redirect the user to login page and display success message
-									echo("Signup sucessfully");
+									echo("<p>Signup sucessfully</p>");
 									exit();
 								}else {
 									
 									// If something goes wrong and it fails to run the query redirect the user to previous page and display error message
-									echo("error");
+									echo("<p>error</p>");
 									
 									exit();
 								}
@@ -205,17 +205,17 @@ if (isset($_POST['signup'])) {
 		
 		
 		}else{
-            $statusMsg = "Sorry, there was an error uploading your file.";
+            $statusMsg = "<p>Sorry, there was an error uploading your file.</p>";
 			echo $statusMsg;
 			exit();
         }
     }else{
-        $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
+        $statusMsg = '<p>Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.</p>';
 		echo $statusMsg;
 		exit();
     }
 }else{
-    $statusMsg = 'Please select a file to upload.';
+    $statusMsg = '<p>Please select a file to upload.</p>';
 	echo $statusMsg;
 	exit();
 }
@@ -239,7 +239,7 @@ if (isset($_POST['signup'])) {
 	
 }else{
 	// if the button is not clicked redirect the user back
-	header("location: index.php?mg=notclicked");
+	header("<p>Please fill the form properly</p>");
 }
 
 

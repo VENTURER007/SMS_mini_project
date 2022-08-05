@@ -306,7 +306,9 @@ border-radius: 7px;
 
 
 
-
+p{
+	color:#1963ec
+}
 
 .main-color {
 	color: #ffc107
@@ -320,7 +322,7 @@ border-radius: 7px;
 .navbar {
 	background-color: var(--navbar-bg-color) !important;
 	border: none !important;
-	max-width: 1422px;
+	
 	box-shadow: 2px 2px 6px #d1d9e6, -2px -2px 6px #f9f9f9;
 
 }

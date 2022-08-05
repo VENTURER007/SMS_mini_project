@@ -69,7 +69,9 @@ include "/home/venturer/SMS_mini_project/db.php";
                
                      endwhile;echo "</tbody>";
                      echo "</table><br><button class=' hvr-radial-out button' style='margin-left: 161px;'  onclick='enter_ce_mark(event);' id='ce_button";?><?php echo $id; ?><?php echo"' >Enter</button> ";
-                    }
+                    }else{
+                        echo "<p class='container'>No records available!";
+                     }
 
         }
     }
