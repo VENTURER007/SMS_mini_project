@@ -162,7 +162,7 @@ const xhr = new XMLHttpRequest();
 
       }
 function personal_update(){
-
+  
 const data = new FormData();
 const xhr = new XMLHttpRequest();
 let update = document.getElementById("personal_button").value;
@@ -183,11 +183,14 @@ var gender = document.querySelector('input[name="g"]:checked').value;
     // document.getElementById("personal_details").click();
     
     personal_details();
-    window.alert("Personal details updated sucessfully!")
+    window.alert(xhr.responseText)
 
     // document.getElementById("personal_details_div").innerHTML = xhr.responseText;
 
   }
+  var phoneno = /^\d{10}$/;
+  if(mobile.match(phoneno))
+  {
   data.append("update",update)
   data.append("name",name);
   data.append("email" , email);
@@ -200,7 +203,11 @@ var gender = document.querySelector('input[name="g"]:checked').value;
   data.append("gender", gender);
   xhr.open("POST" , "update.php" , true);
   xhr.send(data);
-
+  }else
+  {
+     alert("Not a valid Phone Number");
+     return false;
+  }
 }
 
 
@@ -213,7 +220,7 @@ let semester = document.getElementById("semester").value;
 
   xhr.onload=function(){
 
-    window.alert("Academic details updated sucessfully!")
+    window.alert(xhr.responseText)
     // document.getElementById("academic_details_div").innerHTML = xhr.responseText;
     // academic_details();
     // alert("Academic details updated sucessfully!");
@@ -377,7 +384,7 @@ xhr.send(data);
 <div class="input__div" id='personal_details_div'>
             <label for="name" class="input__label">Name</label><input type="text" class="form__input form-control" id="name" placeholder="Full Name *" value = "<?php echo $_SESSION['loginName'];?>" ><br>
             <label for="email" class="input__label"> Email</label><input id="email"type="text" class="form__input form-control" value = "<?php echo $_SESSION['loginEmail'];?>"><br>
-            <label for="dob" class="input__label"> Date of birth</label><input id="dob"type="text" class="form__input form-control" value = "<?php echo $_SESSION['dob'];?>"><br>
+            <label for="dob" class="input__label"> Date of birth</label><input id="dob"type="date" class="form__input form-control" value = "<?php echo $_SESSION['dob'];?>"><br>
             <label for="father" class="input__label">Father name</label><input id="father"type="text" class="form__input form-control" value = "<?php echo $_SESSION['father'];?>"><br>
             <label for="mother" class="input__label">Mother name</label><input id="mother"type="text" class="form__input form-control" value = "<?php echo $_SESSION['mother'];?>"><br>
             <label for="blood" class="input__label"> Blood Group</label><input id="blood"type="text" class="form__input form-control" value = "<?php echo $_SESSION['blood'];?>"><br>
@@ -391,7 +398,7 @@ xhr.send(data);
               </div><br>
             <label for="address" class="input__label">Address</label><input id="address"type="textarea" style="
 	height: 150px;" class="form__input form-control" value = "<?php echo $_SESSION['address'];?>"><br>
-            <button id="personal_button" class="hvr-radial-out" value="update" onclick="personal_update();">update</button>
+            <button id="personal_button" class="hvr-radial-out hvr-grow-shadow" value="update" onclick="personal_update();">update</button>
 </div>
 
 <div class="input__div" id='academic_details_div'>
@@ -400,7 +407,7 @@ xhr.send(data);
 <label for="email" class="input__label">Year of Admission</label><input id="yoa"  type="text" class="form__input form-control" value = "<?php echo $_SESSION['yoa'];?>"><br>
 <label for="dob" class="input__label">Course</label><input id="branch" type="text" class="form__input form-control" value = "<?php echo $_SESSION['course'];?>"><br>
 <label for="blood" class="input__label">Semester</label><input id="semester"  type="text" class="form__input form-control" value = "<?php echo $_SESSION['semester'];?>"><br>
-<button class="hvr-radial-out" id="academic_button"  onclick="academic_update();">update</button>
+<button class="hvr-radial-out hvr-grow-shadow" id="academic_button"  onclick="academic_update();">update</button>
 </div> 
 
 

@@ -288,7 +288,7 @@ body {
 .navbar {
 	background-color: var(--navbar-bg-color) !important;
     border: none !important;
-    max-width: 1422px;
+    max-width: 100%;
     box-shadow: 2px 2px 6px #d1d9e6, -2px -2px 6px #f9f9f9;
 }
 .navbar .dropdown-menu {
@@ -302,9 +302,9 @@ body {
 }
 .navbar .navbar-brand {color:#1963ec !important}
 .navbar .navbar-nav>li>a:focus,
-.navbar .navbar-nav>li>a:hover {color: #EEE !important}
+.navbar .navbar-nav>li>a:hover {background-color:#EEE;color: #1963ec !important}
 
-.navbar .navbar-nav>.open>a,
+.navbar .navbar-nav>.open>a,#1963ec
 .navbar .navbar-nav>.open>a:focus,
 .navbar .navbar-nav>.open>a:hover {background-color: transparent !important; color: #FFF !important}
 

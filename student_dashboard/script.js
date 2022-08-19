@@ -45,12 +45,12 @@ window.addEventListener('resize', function () {
 // dropdown menu in the side nav
 var slideNavDropdown = $('.sidebar-dropdown');
 
-$('.sidebar .categories').addEventListener('click', function (event) {
+$('.sidebar').addEventListener('click', function (event) {
   event.preventDefault()
 
   const item = event.target.closest('.has-dropdown')
 
-  if (! item) {
+  if (!item) {
     return
   }
 

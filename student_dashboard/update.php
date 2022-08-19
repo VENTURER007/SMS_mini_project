@@ -119,8 +119,9 @@
                                  }else {
                                     
                                     // If something goes wrong and it fails to run the query redirect the user to previous page and display error message
-                                    echo("error");
-                                    
+                                    echo($mysqli->error);
+                                    echo($stmt->error);
+                                    echo($name."<br>". $email."<br>". $father."<br>". $mother ."<br>".$dob."<br>". $blood."<br>". $mobile."<br>". $gender."<br>". $address."<br>".$user_id."<br>".$sql1."<br>".$result."<br>"."error");
                                     exit();
                                  }
                               }
